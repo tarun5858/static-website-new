@@ -189,13 +189,13 @@
                         <div class="main-menu">
                             <ul>
                                 <li ><a  href="howitworks.html">How it works</a></li>
-                                <li><a href="success.html">Success Stories</a></li>
+                                <li><a href="success-stories.html">Success Stories</a></li>
                                 <!-- <li><a href="success.html">Blogs</a></li> -->
                                 <li class="mobile-dropdown dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle ">Resources<i class="fas fa-chevron-down" style="margin-left:10px;"></i></a>
 
                                     <ul class="dropdown-menu">
-                                        <li><a href="blogs.html">Blogs</a></li>
+                                        <li><a href="blog.html">Blog</a></li>
                                         <li><a href="contactus.html">FAQs</a></li>
                                         <li><a href="calculators.html">Calculators</a></li>
                                     </ul>
@@ -230,12 +230,12 @@
                           <ul>
                             <li><a href="home.html" class="active"><b>Home</b></a></li>
                             <li><a href="howitworks.html">How It works</a></li>
-                            <li><a href="success.html">Success Stories</a></li>
+                            <li><a href="success-stories.html">Success Stories</a></li>
                       
                             <li class="dropdown">
                               <button href="javascript:void(0);" class="dropdown-toggle">Resources<i class="fas fa-chevron-down arrow-icon"></i></button>
                               <ul class="dropdown-content">
-                                <li><a href="blogs.html">Blogs</a></li>
+                                <li><a href="blog.html">Blog</a></li>
                                 <li><a href="contactus.html">FAQs</a></li>
                                 <li><a href="calculators.html">Calculators</a></li>
                               </ul>
@@ -619,7 +619,7 @@
                                 <div class="single-personal-info">
                                     <label for="next7Days">Date:</label>
                                     <div class="dropdown-date" id="next7DaysDropdown">
-                                        <div class="dropdown-button-1" id="msg_date" onclick="toggleDropdowndate()">Select an option</div>
+                                        <div class="dropdown-button-1" id="msg_date" onclick="toggleDropdowndate()">Block a date </div>
                                         <div class="dropdown-content-1 text-center p-2" id="next7DaysDropdownContent">
                                             <!-- Options will be populated here -->
                                         </div>
@@ -630,7 +630,7 @@
                                 <div class="single-personal-info">
                                     <div class="dropdown" id="customDropdown" style="width: 100%;">
                                         <label for="time" class="ml-3">Time:</label> <!-- Adjusted margin-left -->
-                                        <div class="dropdown-button-2"  id="msg_time" onclick="toggleDropdown()">Select an option</div>
+                                        <div class="dropdown-button-2"  id="msg_time" onclick="toggleDropdown()">Block a timeslot</div>
                                         <div class="dropdown-content-2 text-justify p-4 " id="dropdownContents">                                  
                                             <div class="dropdown-option-1 mt-1 mb-2" onclick="selectOption('10:00 am')">10:00 am</div>
                                             <div class="dropdown-option-1 mt-1 mb-2" onclick="selectOption('10:30 am')">10:30 am</div>
@@ -652,7 +652,7 @@
                             
                             <!-- Button to trigger the modal -->
                             <div class="col-md-12 col-12 mb-3">
-                                <button type="submit" class="submit-btn">BOOK NOW</button>
+                                <button type="submit" class="submit-btn">SCHEDULE</button>
                                 
                             </div>
                             
@@ -706,7 +706,7 @@
                                         <ul>
                                             <li><a href="home.html">Home</a></li>
                                             <li><a href="ourstory.html">Our Story</a></li>
-                                            <li><a href="blogs.html">Blogs</a></li>
+                                            <li><a href="blog.html">Blog</a></li>
                                             <li><a href="contactus.html">Contact us</a></li>
                                         </ul>
                                     </div>
@@ -1440,7 +1440,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     const message = document.getElementById('message3').value;
 
     try {
-        const response = await fetch('https://test-backend-server-l5xk.onrender.com/submit-form', {
+        const response = await fetch('https://prehome-website-backend-service.onrender.com/submit-form', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, contact, location, message })
@@ -1473,7 +1473,7 @@ document.getElementById('appointment-form').addEventListener('submit', async fun
     }
 
     try {
-        const response = await fetch('https://test-backend-server-l5xk.onrender.com/submit-appointment', {
+        const response = await fetch('https://prehome-website-backend-service.onrender.com/submit-appointment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, contact, date, time })
@@ -1564,7 +1564,7 @@ async function handleWaitlistSubmit(e) {
   };
 
   try {
-    const response = await fetch('https://test-backend-server-l5xk.onrender.com/submit-waitlist', {
+    const response = await fetch('https://prehome-website-backend-service.onrender.com/submit-waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
