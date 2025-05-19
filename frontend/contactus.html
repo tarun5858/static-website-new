@@ -281,7 +281,7 @@
 			</div>
 			
 			<!-- prehomeclub -->
-			<form id="prehomeForm" action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DC40000026yrZ" method="POST">
+			<form id="prehomeForm">
 				<input type="hidden" name="oid" value="00DC40000026yrZ">
 				<input type="hidden" id="company" name="company" value="Default company">
 				<input type="hidden" name="lead_source" value="Landing Page Header">
@@ -346,7 +346,6 @@
 							</div>
 							
 						</div>  
-                        <button type="button" id="addToWaitlistBtn" class="theme-btn-form-btn btn-radius">Add me to the waitlist</button>
 					</div>
 					
 					<!-- Tab 2 -->
@@ -354,8 +353,6 @@
 						<div class="">
 							<h3 class="title-color2" style="margin-bottom: 5px;" id="exampleModalLabel">Tell us about yourself</h3>
 							<p class="title-color2 " style="color: #000; font-size: 14px; margin-top: 0px;"> Your details</p>
-                         
-                            
 						</div>
 						
 						<div class="col-md-12 mt-3">
@@ -393,7 +390,14 @@
 			
 			<div class="modal-footer d-flex justify-content-between">
 				<button type="button" id="prevBtn" onclick="nextPrevHeader(-1)" style="display:none;" class="theme-btn-form-btn btn-radius">Previous</button>
-    <button type="submit" id="keepPostedBtn" class="theme-btn-form-btn btn-radius" style="display:none;" onclick="handlesubmit()">Keep me posted</button>
+				<button type="button" id="nextBtn" onclick="nextPrevHeader(1)" class="theme-btn-form-btn btn-radius">Count me in</button>
+                <button
+  type="button"
+  id="keepMePostedBtn"
+  class="theme-btn-form-btn btn-radius"
+>
+ keep me posted 
+</button>
 			</div>
 			
 			
@@ -542,7 +546,7 @@
                                     <h4>Q: What is the process for purchasing the apartment after the rental period is over?</h4>
                                     <p>A: At the end of the rental period, customers have the option to purchase the apartment at a locked-in price, which is specified right at the time of renting the apartment.</p>
                                     <h4>Q: What if I am unable to continue with the Prehome program?</h4>
-                                    <p>A:    The Prehome program is designed to offer you flexibility to decide on your commitment to home ownership. The program has two phases, a rental phase and the phase that provides the person with the option to unlock ownership after a fixed tenure. You have the option to opt out in case you are unable to continue with the program.</p>
+                                    <p>A:    The Prehome program is designed to offer you flexibility to decide on your commitment to home ownership. The program has two phases, a rental phase and the phase that provides the person with the option to choose to unlock ownership after a fixed tenure. You have the option to opt out in case you are unable to continue with the program.</p>
                                     <h4>Q. Is the Prehome program like a loan?</h4>
                                     <p>A: No, loan providing institutions (usually banks and NBFCs) allow you to borrow money to purchase a home. These institutions require you to pay a down payment and over time you pay back the institutions along with floating rate interests that these institutions keep changing over time.
                                         With Prehome, you are not taking a loan, but choosing a new path to home ownership. Our investors/partners own the home while allowing you to graduate from being a renter to a homeowner. There's no debt to repay or interest charged as you haven't borrowed anything from them.</p>
@@ -916,7 +920,6 @@
                             var email = $('#text1').val();
                             var msg_date = $('#msg_date').html();
                             var msg_time = $('#msg_time').html();
-                            var msg_time = $('#msg_time').html();
                             if(usr_name != '' && email != '' && msg_date != '' && msg_time != '')
                             {
                                 
@@ -1067,420 +1070,539 @@
                                         </script>
                                         
                                         <script>
+                                            let currentTab = 0;  // Current tab is set to be the first tab (0)
+                                            showTab(currentTab);  // Display the current tab
+                                                    
+                                            function nextPrevHeader(n) {
+                                                let x = document.getElementsByClassName("tab");
+                                                
+                                                // Validate form before moving to the next step
+                                                if (n === 1 && !validateForm()) return false;
+                                                
+                                                x[currentTab].style.display = "none";
+                                                currentTab += n;
+                                                console.log('currentTab22--',currentTab);
+                                                console.log('x.length22--',x.length);
+                                                if (currentTab >= x.length) {
+                                                    document.getElementById("prehomeForm").submit();
+                                                    const modal = document.querySelector(".modal-content");
+	 if (modal) {
+		modal.style.display = "none";
+	}
+
+	setTimeout(() => {
+		document.getElementById("prehomeForm").submit();
+	}, 200);
+
+             return false;
+                                                }
+                                                
+                                                showTab(currentTab);
+                                            }
                                             
-showTab(currentTab);
+                                            function validateForm() {
+                                        let valid = true;
+                                        const currentTabElement = document.getElementsByClassName("tab")[currentTab];
+                                        const requiredInputs = currentTabElement.querySelectorAll("input[required], textarea[required], select[required]");
+                                    
+                                        // Clear all previous error messages
+                                        currentTabElement.querySelectorAll(".error-message").forEach(e => e.remove());
+                                    
+                                        // Helper to create error message below input
+                                        function showError(el, message) {
+                                            const errorEl = document.createElement("small");
+                                            errorEl.className = "error-message";
+                                            errorEl.style.color = "red";
+                                            errorEl.style.display = "block";
+                                            errorEl.style.marginTop = "5px";
+                                            errorEl.textContent = message;
+                                            el.insertAdjacentElement('afterend', errorEl);
+                                        }
+                                    
+                                        // Validate standard required inputs
+                                        requiredInputs.forEach(input => {
+                                            if (input.offsetParent !== null && !input.value.trim()) {
+                                                input.classList.add("invalid");
+                                                // showError(input, "Please enter your name");
+                                                valid = false;
+                                            } else {
+                                                input.classList.remove("invalid");
+                                            }
+                                        });
+                                    
+                                        // Location validation (show alert + button red border)
+                                        const locationInput = currentTabElement.querySelector("#locationHeader");
+                                        if (locationInput && locationInput.value.trim() === "") {
+                                            locationInput.classList.add("invalid");
+                                            if (typeof selectedButton !== "undefined" && selectedButton) {
+                                                selectedButton.classList.add("invalid");
+                                            }
+                                            alert("Please select a location.");
+                                            valid = false;
+                                        } else {
+                                            if (locationInput) locationInput.classList.remove("invalid");
+                                            if (typeof selectedButton !== "undefined" && selectedButton) {
+                                                selectedButton.classList.remove("invalid");
+                                            }
+                                        }
+                                    
+                                        // Property validation (show alert + button red border)
+                                        const propertyInput = currentTabElement.querySelector("#propertyHeader");
+                                        if (propertyInput && propertyInput.value.trim() === "") {
+                                            propertyInput.classList.add("invalid");
+                                            if (typeof selectedButton1 !== "undefined" && selectedButton1) {
+                                                selectedButton1.classList.add("invalid");
+                                            }
+                                            alert("Please select a property type.");
+                                            valid = false;
+                                        } else {
+                                            if (propertyInput) propertyInput.classList.remove("invalid");
+                                            if (typeof selectedButton1 !== "undefined" && selectedButton1) {
+                                                selectedButton1.classList.remove("invalid");
+                                            }
+                                        }
+                                    
+                                    
+                                    
+                                        const lastNameInput = currentTabElement.querySelector("#last_name");
+                                    if (lastNameInput) {
+                                        const lastNameValue = lastNameInput.value.trim();
+                                        if (lastNameValue === "") {
+                                            lastNameInput.classList.add("invalid");
+                                            showError(lastNameInput, "Please enter your name");
+                                            valid = false;
+                                        } else {
+                                            lastNameInput.classList.remove("invalid");
+                                        }
+                                    }
+                                    
+                                    
+                                        // Email format validation (show inline error)
+                                        const emailInput = currentTabElement.querySelector("#email");
+                                        if (emailInput) {
+                                            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                            if (!emailPattern.test(emailInput.value.trim())) {
+                                                emailInput.classList.add("invalid");
+                                                showError(emailInput, "Please enter a valid email address.");
+                                                valid = false;
+                                            } else {
+                                                emailInput.classList.remove("invalid");
+                                            }
+                                        }
+                                    
+                                        // Phone number validation (show inline error)
+                                        const phoneInput = currentTabElement.querySelector("#phone");
+                                        if (phoneInput && phoneInput.value.trim().length < 10) {
+                                            phoneInput.classList.add("invalid");
+                                            showError(phoneInput, "Please enter a valid phone number.");
+                                            valid = false;
+                                        }else if (phoneInput && phoneInput.value.trim().length > 10) {
+                                            phoneInput.classList.add("invalid");
+                                            showError(phoneInput, "Please enter a valid phone number.");
+                                            valid = false;
+                                        } 
+                                         else if (phoneInput) {
+                                            phoneInput.classList.remove("invalid");
+                                        }
+                                    
+                                        // Checkbox validation (show inline error)
+                                        const agreementCheckbox = currentTabElement.querySelector("#checkbox");
+                                        if (agreementCheckbox && !agreementCheckbox.checked) {
+                                            showError(agreementCheckbox, "You must agree to the privacy policy.");
+                                            valid = false;
+                                        }
+                                    
+                                        // Mark step as complete if valid
+                                        if (valid) {
+                                            document.getElementsByClassName("step")[currentTab].classList.add("finish");
+                                        }
+                                    
+                                        return valid;
+                                    }
+                                    
+                                    
+                                            
+                                            function showTab(n) {
+                                                let x = document.getElementsByClassName("tab");
+                                                x[n].style.display = "block";
+                                                
+                                                // Handle button visibility
+                                                document.getElementById("prevBtn").style.display = (n === 0) ? "none" : "inline";
+                                                document.getElementById("nextBtn").innerHTML = (n === x.length - 1) ? "Keep me posted" : "Add me to the waitlist";
+                                                
+                                                fixStepIndicator(n);
+                                            }
+                                    
+                                            function fixStepIndicator(n) {
+                                                let steps = document.getElementsByClassName("step");
+                                                
+                                                for (let i = 0; i < steps.length; i++) {
+                                                    steps[i].classList.remove("active");
+                                                }
+                                                
+                                                steps[n].classList.add("active");
+                                                
+                                            }
+                                    
+                                            document.querySelectorAll("input, textarea, select").forEach(el => {
+                                            el.addEventListener("input", () => {
+                                                el.classList.remove("invalid");
+                                            });
+                                        });
+                                    
+                                                    
+                                        </script>
+                                        <!-- form 1 script  -->
+                                                                            
+                                                                            <!-- form2 slider -->
+                                                                            <script>
+                                                                                let selectedButtonTab1 = null;  // To track the selected button
+                                                                                
+                                                                                function selectLocationTab1(button, isOther = false) {
+                                                                                    // Remove border from the previously selected button
+                                                                                    if (selectedButtonTab1) {
+                                                                                        selectedButtonTab1.classList.remove('selected');
+                                                                                    }
+                                                                                    
+                                                                                    // Add border to the current button
+                                                                                    button.classList.add('selected');
+                                                                                    selectedButtonTab1 = button;
+                                                                                    
+                                                                                    // Handle "Other" button functionality
+                                                                                    const otherInput = document.getElementById('otherLocationTab1');
+                                                                                    
+                                                                                    if (isOther) {
+                                                                                        otherInput.classList.remove('d-none');  // Show the input box
+                                                                                        otherInput.focus();
+                                                                                    } else {
+                                                                                        otherInput.classList.add('d-none');  // Hide the input box when another button is clicked
+                                                                                        otherInput.value = '';  // Clear the input field
+                                                                                    }
+                                                                                    
+                                                                                    // Log the selected location value (you can use it for form submission)
+                                                                                    console.log(`Selected Location: ${isOther ? otherInput.value : button.dataset.value}`);
+                                                                                }
+                                                                                
+                                                                            </script>
+                                                                            
+                                                                            <script>
+                                                                                let selectedButtonTab2 = null;  // To track the selected button
+                                                                                
+                                                                                function selectLocationTab12(button, isOther = false) {
+                                                                                    if (selectedButtonTab2) {
+                                                                                        selectedButtonTab2.classList.remove('selected');
+                                                                                    }
+                                                                                    
+                                                                                    button.classList.add('selected');
+                                                                                    selectedButtonTab2 = button;
+                                                                                    
+                                                                                    const otherInput2 = document.getElementById('otherLocationTab12');  // Use the correct ID
+                                                                                    
+                                                                                    if (isOther) {
+                                                                                        otherInput2.classList.remove('d-none');
+                                                                                        otherInput2.focus();
+                                                                                    } else {
+                                                                                        otherInput2.classList.add('d-none');
+                                                                                        otherInput2.value = '';
+                                                                                    }
+                                                                                    
+                                                                                    console.log(`Selected Location: ${isOther ? otherInput2.value : button.dataset.value}`);
+                                                                                }
+                                                                                
+                                                                            </script>
+                                                                            <script>
+                                                                                let currentTab1 = 0;  // Current tab is set to be the first tab (0)
+                                                                                showTab1(currentTab1);  // Display the current tab
+                                                                                
+                                                                                function nextPrevTab1(n) {
+                                                                                    let x = document.getElementsByClassName("tab1");
+                                                                                    
+                                                                                    // Validate form before moving to the next step
+                                                                                    if (n === 1 && !validateForm1()) return false;
+                                                                                    
+                                                                                    x[currentTab1].style.display = "none";   // Use currentTab1 instead of currentTab
+                                                                                    currentTab1 += n;
+                                                                                    
+                                                                                    if (currentTab1 >= x.length) {
+                                                                                        window.location.href = "thank-you.html";  // Replace with your Thank You page URL
+                                                                                        return false;
+                                                                                    }
+                                                                                    
+                                                                                    showTab1(currentTab1);  // Pass the correct tab index
+                                                                                }
+                                                                                
+                                                                                function showTab1(n) {
+                                                                                    let x = document.getElementsByClassName("tab1");
+                                                                                    x[n].style.display = "block";
+                                                                                    
+                                                                                    document.getElementById("prevBtnTab1").style.display = (n === 0) ? "none" : "inline";
+                                                                                    document.getElementById("nextBtnTab1").innerHTML = (n === x.length - 1) ? "Keep me posted" : "Add me to the waitlist";
+                                                                                    
+                                                                                    // Use the correct step indicator function name
+                                                                                    fixStepIndicator1(n);
+                                                                                }
+                                                                                
+                                                                                
+                                                                                function validateForm1() {
+                                                                                    console.log("validate1")
+                                                                                    let x, y, valid = true;
+                                                                                    x = document.getElementsByClassName("tab1");
+                                                                                    y = x[currentTab].getElementsByTagName("input");
+                                                                                    
+                                                                                    for (let i = 0; i < y.length; i++) {
+                                                                                        if (y[i].id === "otherLocationTab1" && !y[i].classList.contains("d-none") && y[i].value === "") {
+                                                                                            y[i].classList.add("invalid");
+                                                                                            valid = false;
+                                                                                        } else {
+                                                                                            y[i].classList.remove("invalid");
+                                                                                        }
+                                                                                    }
+                                                                                    
+                                                                                    if (valid) {
+                                                                                        document.getElementsByClassName("step1")[currentTab].classList.add("finish");
+                                                                                    }
+                                                                                    
+                                                                                    return valid;
+                                                                                }
+                                                                                
+                                                                                function fixStepIndicator1(n) {
+                                                                                    let steps = document.getElementsByClassName("step1");
+                                                                                    
+                                                                                    for (let i = 0; i < steps.length; i++) {
+                                                                                        steps[i].classList.remove("active");
+                                                                                    }
+                                                                                    
+                                                                                    steps[n].classList.add("active");
+                                                                                }
+                                                                                
+                                                                                
+                                                                            </script>
+                                                                            
+                                                                            
+                                                                            <script>
+                                                                                window.addEventListener('scroll', () => {
+                                                                                    const landing = document.getElementById('landing');
+                                                                                    const ctaBtn = document.getElementById('ctaBtn');
+                                                                                    
+                                                                                    // Get the bottom position of the landing section
+                                                                                    const landingBottom = landing.getBoundingClientRect().bottom;
+                                                                                    
+                                                                                    // Show/hide CTA button based on scroll position
+                                                                                    if (landingBottom <= 0) {
+                                                                                        ctaBtn.style.display = 'block';  // Show button after leaving landing page
+                                                                                    } else {
+                                                                                        ctaBtn.style.display = 'none';   // Hide button on landing page
+                                                                                    }
+                                                                                });
+                                                                            </script>
+                                                                            
+                                                                            <script>
+                                                                                
+                                                                            </script>
+                                                                            
+                                                                            <script>
+                                                                                document.getElementById("nextBtnTab1").addEventListener("click", function() {
+                                                                                    document.getElementById("location").value = "Website Form"; // Set value before submission
+                                                                                });
+                                                                                
+                                                                                document.getElementById("nextBtnTab1").addEventListener("click", function() {
+                                                                                    document.getElementById("propertyType").value = "Website Form"; // Set value before submission
+                                                                                });
+                                                                            </script>
+                                    
+                                                                          
+                                       
+                                    <script>
+                                        // Show/hide mobile menu
+                                    document.getElementById("hamburger").addEventListener("click", () => {
+                                      document.getElementById("mobile-menu-overlay").classList.remove("hidden");
+                                    });
+                                    
+                                    document.querySelector(".close-nav").addEventListener("click", () => {
+                                      document.getElementById("mobile-menu-overlay").classList.add("hidden");
+                                    });
+                                    
+                                    // Toggle dropdowns
+                                    document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                                      toggle.addEventListener('click', () => {
+                                        toggle.parentElement.classList.toggle('open');
+                                      });
+                                    });
+                                    
+                                    </script>   
+                                    <script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('fname3').value;
+    const contact = document.getElementById('email3').value;
+    const location = document.getElementById('location3').value;
+    const message = document.getElementById('message3').value;
+
+    try {
+        const response = await fetch('https://test-backend-server-l5xk.onrender.com/submit-form', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, contact, location, message })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            window.location.href = 'https://www.prehome.in/thank-you';
+        } else {
+            alert(data.message || "Submission failed");
+        }
+    } catch (error) {
+        alert("There was an error submitting the form.");
+    }
+});
+</script>
+
+<script>
+document.getElementById('appointment-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById('fname1').value;
+    const contact = document.getElementById('text1').value;
+    const date = document.getElementById('msg_date').textContent.trim();
+    const time = document.getElementById('msg_time').textContent.trim();
+
+    if (date === "Select an option" || time === "Select an option") {
+        alert("Please select a valid date and time.");
+        return;
+    }
+
+    try {
+        const response = await fetch('https://test-backend-server-l5xk.onrender.com/submit-appointment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, contact, date, time })
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            window.location.href = "https://www.prehome.in/thank-you";
+        } else {
+            alert(data.error || "Failed to submit appointment.");
+        }
+    } catch (err) {
+        alert("Error submitting appointment.");
+    }
+});
+</script>
+
+<script>
+// Helper: Validate form fields (customize as needed)
+function validateWaitlistForm() {
+  const name = document.getElementById('last_name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const location = document.getElementById('locationHeader').value.trim();
+  const property = document.getElementById('propertyHeader').value.trim();
+
+  if (!name || !email || !phone || !location || !property) {
+    alert("Please fill all required fields.");
+    return false;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("Please enter a valid email.");
+    return false;
+  }
+  if (!/^\d{10}$/.test(phone)) {
+    alert("Please enter a valid 10-digit phone number.");
+    return false;
+  }
+  return true;
+}
+
+async function handleWaitlistSubmit(e) {
+  e.preventDefault();
+
+  if (!validateWaitlistForm()) return;
+
+  // Gather form data
+  const name = document.getElementById('last_name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  let selectedLocation = '';
+  let otherLocation = '';
+  if (
+    document.getElementById('otherLocation') &&
+    !document.getElementById('otherLocation').classList.contains('d-none') &&
+    document.getElementById('otherLocation').value.trim() !== ''
+  ) {
+    selectedLocation = 'Other';
+    otherLocation = document.getElementById('otherLocation').value.trim();
+  } else {
+    selectedLocation = document.getElementById('locationHeader').value.trim();
+    otherLocation = '';
+  }
+
+  let selectedLayout = '';
+  let otherLayout = '';
+  if (
+    document.getElementById('otherPropertyType') &&
+    !document.getElementById('otherPropertyType').classList.contains('d-none') &&
+    document.getElementById('otherPropertyType').value.trim() !== ''
+  ) {
+    selectedLayout = 'Other';
+    otherLayout = document.getElementById('otherPropertyType').value.trim();
+  } else {
+    selectedLayout = document.getElementById('propertyHeader').value.trim();
+    otherLayout = '';
+  }
+
+  const payload = {
+    name,
+    email,
+    phone,
+    selectedLocation,
+    otherLocation,
+    selectedLayout,
+    otherLayout,
+  };
+
+  try {
+    const response = await fetch('https://test-backend-server-l5xk.onrender.com/submit-waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      window.location.href = "https://www.prehome.in/thank-you";
+    } else {
+      const data = await response.json();
+      alert(data.error || "Failed to submit waitlist form.");
+    }
+  } catch (error) {
+    alert("Failed to submit form. Please try again.");
+  }
+}
+
+// Attach handler to button
+document.getElementById('keepMePostedBtn').addEventListener('click', handleWaitlistSubmit);
+</script>
+
+
+<script>
+let currentTab3 = 0;  // Current tab is set to be the first tab (0)
+showTab(currentTab3);  // Display the current tab
 
 function showTab(n) {
     let x = document.getElementsByClassName("tab");
-    for (let i = 0; i < x.length; i++) x[i].style.display = "none";
     x[n].style.display = "block";
-    // Show Previous and Keep me posted only on Tab 2 (index 1)
-    document.getElementById("prevBtn").style.display = (n === 1) ? "inline" : "none";
-    document.getElementById("keepPostedBtn").style.display = (n === 1) ? "inline" : "none";
+
+    // Handle button visibility
+    document.getElementById("prevBtn").style.display = (n === 0) ? "none" : "inline";
+    document.getElementById("nextBtn").style.display = (n === 0) ? "inline" : "none";
+    document.getElementById("keepMePostedBtn").style.display = (n === x.length - 1) ? "inline" : "none";
+
+    fixStepIndicator(n);
 }
-
-// "Add me to the waitlist" button: go to Tab 2
-document.getElementById("addToWaitlistBtn").addEventListener("click", function() {
-    if (validateForm1()) {
-        currentTab = 1;
-        showTab(currentTab);
-    }
-});
-
-// "Previous" button: go back to Tab 1
-document.getElementById("prevBtn").addEventListener("click", function() {
-    currentTab = 0;
-    showTab(currentTab);
-});
-
-// "Keep me posted" button submits the form (handled by form submit event)
-    function handlesubmit(event) {
-        if (event) event.preventDefault();
-
-        // Collect values from Tab 2
-        var name = document.getElementById('last_name').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var email = document.getElementById('email').value.trim();
-
-        // For location and layout, handle "Other" cases
-        var selectedLocation = document.getElementById('locationHeader').value.trim();
-        var otherLocation = document.getElementById('otherLocation').value.trim();
-        var selectedLayout = document.getElementById('propertyHeader').value.trim();
-        var otherLayout = document.getElementById('otherPropertyType').value.trim();
-
-        // Basic validation for Tab 2
-         if (otherLocation) {
-        selectedLocation = "Other";
-    }
-    if (otherLayout) {
-        selectedLayout = "Other";
-    }
-        let valid = true;
-        if (!phone) {
-            document.getElementById('phone').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('phone').classList.remove('invalid');
-        }
-        if (!email) {
-            document.getElementById('email').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('email').classList.remove('invalid');
-        }
-        if (!valid) return false;
-
-        // Prepare data for backend
-        var data = {
-            name: name,
-            email: email,
-            phone: phone,
-            selectedLocation: selectedLocation,
-            otherLocation: otherLocation,
-            selectedLayout: selectedLayout,
-            otherLayout: otherLayout
-        };
-
-        // Use axios to POST to backend
-        axios.post('http://localhost:5000/submit-waitlist', data)
-            .then(function (response) {
-                if (response.data && response.data.message) {
-                    alert('Thank you! Your details have been submitted.');
-                    document.getElementById('prehomeForm').reset();
-                    currentTab = 0;
-                    showTab(currentTab);
-                } else {
-                    alert('There was an error submitting your details. Please try again.');
-                }
-            })
-            .catch(function () {
-                alert('There was an error submitting your details. Please try again.');
-            });
-
-        return false;
-    }
-
-    // Attach handler to form submit (for both button and Enter key)
-    document.getElementById('prehomeForm').addEventListener('submit', handlesubmit);
-
-    // Existing tab logic
-    // let currentTab = 0;
-    showTab(currentTab);
-
-    function showTab(n) {
-        let x = document.getElementsByClassName("tab");
-        for (let i = 0; i < x.length; i++) x[i].style.display = "none";
-        x[n].style.display = "block";
-        // Show Previous and Keep me posted only on Tab 2 (index 1)
-        document.getElementById("prevBtn").style.display = (n === 1) ? "inline" : "none";
-        document.getElementById("keepPostedBtn").style.display = (n === 1) ? "inline" : "none";
-    }
-
-    // "Add me to the waitlist" button: go to Tab 2
-    document.getElementById("addToWaitlistBtn").addEventListener("click", function() {
-        if (validateForm1()) {
-            currentTab = 1;
-            showTab(currentTab);
-        }
-    });
-
-    // "Previous" button: go back to Tab 1
-    document.getElementById("prevBtn").addEventListener("click", function() {
-        currentTab = 0;
-        showTab(currentTab);
-    });
-
-    // "Keep me posted" button submits the form (handled by form submit event)
-    function handlesubmit(event) {
-        if (event) event.preventDefault();
-
-        // Collect values from Tab 2
-        var name = document.getElementById('last_name').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var email = document.getElementById('email').value.trim();
-
-        // For location and layout, handle "Other" cases
-        var selectedLocation = document.getElementById('locationHeader').value.trim();
-        var otherLocation = document.getElementById('otherLocation').value.trim();
-        var selectedLayout = document.getElementById('propertyHeader').value.trim();
-        var otherLayout = document.getElementById('otherPropertyType').value.trim();
-
-        // Basic validation for Tab 2
-        let valid = true;
-        if (!phone) {
-            document.getElementById('phone').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('phone').classList.remove('invalid');
-        }
-        if (!email) {
-            document.getElementById('email').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('email').classList.remove('invalid');
-        }
-        if (!valid) return false;
-
-        // Prepare data for backend
-        var data = {
-            name: name,
-            email: email,
-            phone: phone,
-            selectedLocation: selectedLocation,
-            otherLocation: otherLocation,
-            selectedLayout: selectedLayout,
-            otherLayout: otherLayout
-        };
-
-        // Use axios to POST to backend
-        axios.post('http://localhost:5000/submit-waitlist', data)
-            .then(function (response) {
-                if (response.data && response.data.message) {
-                    alert('Thank you! Your details have been submitted.');
-                    document.getElementById('prehomeForm').reset();
-                    currentTab = 0;
-                    showTab(currentTab);
-                } else {
-                    alert('There was an error submitting your details. Please try again.');
-                }
-            })
-            .catch(function () {
-                alert('There was an error submitting your details. Please try again.');
-            });
-
-        return false;
-    }
-
-    // Attach handler to form submit (for both button and Enter key)
-    document.getElementById('prehomeForm').addEventListener('submit', handlesubmit);
 </script>
-<!-- Add Axios CDN before your custom scripts -->
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-<script>
-    // ...existing code...
-
-    // "Keep me posted" button submits the form (handled by form submit event)
-    function handlesubmit(event) {
-        if (event) event.preventDefault();
-
-        // Collect values from Tab 2
-        var name = document.getElementById('last_name').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var email = document.getElementById('email').value.trim();
-
-        // For location and layout, handle "Other" cases
-        var selectedLocation = document.getElementById('locationHeader').value.trim();
-        var otherLocation = document.getElementById('otherLocation').value.trim();
-        var selectedLayout = document.getElementById('propertyHeader').value.trim();
-        var otherLayout = document.getElementById('otherPropertyType').value.trim();
-
-        // Basic validation for Tab 2
-        let valid = true;
-        if (!phone) {
-            document.getElementById('phone').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('phone').classList.remove('invalid');
-        }
-        if (!email) {
-            document.getElementById('email').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('email').classList.remove('invalid');
-        }
-        if (!valid) return false;
-
-        // Prepare data for backend
-        var data = {
-            name: name,
-            email: email,
-            phone: phone,
-            selectedLocation: selectedLocation,
-            otherLocation: otherLocation,
-            selectedLayout: selectedLayout,
-            otherLayout: otherLayout
-        };
-
-        // Use axios to POST to backend
-        axios.post('http://localhost:5000/submit-waitlist', data)
-            .then(function (response) {
-                if (response.data && response.data.message) {
-                    alert('Thank you! Your details have been submitted.');
-                    document.getElementById('prehomeForm').reset();
-                    currentTab = 0;
-                    showTab(currentTab);
-                } else {
-                    alert('There was an error submitting your details. Please try again.');
-                }
-            })
-            .catch(function () {
-                alert('There was an error submitting your details. Please try again.');
-            });
-
-        return false;
-    }
-
-    // Attach handler to form submit (for both button and Enter key)
-    document.getElementById('prehomeForm').addEventListener('submit', handlesubmit);
-
-    // Existing tab logic
-    // let currentTab = 0;
-    showTab(currentTab);
-
-    function showTab(n) {
-        let x = document.getElementsByClassName("tab");
-        for (let i = 0; i < x.length; i++) x[i].style.display = "none";
-        x[n].style.display = "block";
-        // Show Previous and Keep me posted only on Tab 2 (index 1)
-        document.getElementById("prevBtn").style.display = (n === 1) ? "inline" : "none";
-        document.getElementById("keepPostedBtn").style.display = (n === 1) ? "inline" : "none";
-    }
-
-    // "Add me to the waitlist" button: go to Tab 2
-    document.getElementById("addToWaitlistBtn").addEventListener("click", function() {
-        if (validateForm1()) {
-            currentTab = 1;
-            showTab(currentTab);
-        }
-    });
-
-    // "Previous" button: go back to Tab 1
-    document.getElementById("prevBtn").addEventListener("click", function() {
-        currentTab = 0;
-        showTab(currentTab);
-    });
-
-    // "Keep me posted" button submits the form (handled by form submit event)
-    function handlesubmit(event) {
-        if (event) event.preventDefault();
-
-        // Collect values from Tab 2
-        var name = document.getElementById('last_name').value.trim();
-        var phone = document.getElementById('phone').value.trim();
-        var email = document.getElementById('email').value.trim();
-
-        // For location and layout, handle "Other" cases
-        var selectedLocation = document.getElementById('locationHeader').value.trim();
-        var otherLocation = document.getElementById('otherLocation').value.trim();
-        var selectedLayout = document.getElementById('propertyHeader').value.trim();
-        var otherLayout = document.getElementById('otherPropertyType').value.trim();
-
-        // Basic validation for Tab 2
-        let valid = true;
-        if (!phone) {
-            document.getElementById('phone').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('phone').classList.remove('invalid');
-        }
-        if (!email) {
-            document.getElementById('email').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('email').classList.remove('invalid');
-        }
-        if (!valid) return false;
-
-        // Prepare data for backend
-        var data = {
-            name: name,
-            email: email,
-            phone: phone,
-            selectedLocation: selectedLocation,
-            otherLocation: otherLocation,
-            selectedLayout: selectedLayout,
-            otherLayout: otherLayout
-        };
-
-        // Use axios to POST to backend
-        axios.post('http://localhost:5000/submit-waitlist', data)
-            .then(function (response) {
-                if (response.data && response.data.message) {
-                    alert('Thank you! Your details have been submitted.');
-                    document.getElementById('prehomeForm').reset();
-                    currentTab = 0;
-                    showTab(currentTab);
-                } else {
-                    alert('There was an error submitting your details. Please try again.');
-                }
-            })
-            .catch(function () {
-                alert('There was an error submitting your details. Please try again.');
-            });
-
-        return false;
-    }
-
-    // Attach handler to form submit (for both button and Enter key)
-    document.getElementById('prehomeForm').addEventListener('submit', handlesubmit);
-</script>
-<!-- ...existing code... -->
-<script>
-    // Add this function to avoid the ReferenceError
-    function validateForm1() {
-        // Basic validation for Tab 1 fields (customize as needed)
-        var name = document.getElementById('last_name').value.trim();
-        var location = document.getElementById('locationHeader').value.trim();
-        var property = document.getElementById('propertyHeader').value.trim();
-
-        let valid = true;
-
-        if (!name) {
-            document.getElementById('last_name').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('last_name').classList.remove('invalid');
-        }
-
-        if (!location) {
-            document.getElementById('locationHeader').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('locationHeader').classList.remove('invalid');
-        }
-
-        if (!property) {
-            document.getElementById('propertyHeader').classList.add('invalid');
-            valid = false;
-        } else {
-            document.getElementById('propertyHeader').classList.remove('invalid');
-        }
-
-        return valid;
-    }
-
-    // Existing tab logic
-    let currentTab = 0;
-    showTab(currentTab);
-
-    function showTab(n) {
-        let x = document.getElementsByClassName("tab");
-        for (let i = 0; i < x.length; i++) x[i].style.display = "none";
-        x[n].style.display = "block";
-        // Show Previous and Keep me posted only on Tab 2 (index 1)
-        document.getElementById("prevBtn").style.display = (n === 1) ? "inline" : "none";
-        document.getElementById("keepPostedBtn").style.display = (n === 1) ? "inline" : "none";
-    }
-
-    // "Add me to the waitlist" button: go to Tab 2
-    document.getElementById("addToWaitlistBtn").addEventListener("click", function() {
-        if (validateForm1()) {
-            currentTab = 1;
-            showTab(currentTab);
-        }
-    });
-
-    // "Previous" button: go back to Tab 1
-    document.getElementById("prevBtn").addEventListener("click", function() {
-        currentTab = 0;
-        showTab(currentTab);
-    });
-
-    // "Keep me posted" button submits the form (handled by form submit event)
-    function handlesubmit() {
-        // Optional: add any extra logic here if needed
-        // Form submission is already handled by the form's submit event
-    }
-</script>
-<!-- ...existing code... -->
+                        
+                    </body>
+                    
+                    </html>
