@@ -214,8 +214,8 @@
                         <div class="main-menu">
                             <ul>
                                 <li ><a  href="howitworks.html">How it works</a></li>
-                                <li><a href="success.html">Success Stories</a></li>
-                                <!-- <li><a href="success.html">Blogs</a></li> -->
+                                <li><a href="success-stories.html">Success Stories</a></li>
+                                <!-- <li><a href="success-stories.html">Blogs</a></li> -->
                                 <li class="mobile-dropdown dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle ">Resources<i class="fas fa-chevron-down" style="margin-left:10px;"></i></a>
 
@@ -255,7 +255,7 @@
                           <ul>
                             <li><a href="home.html" class="active"><b>Home</b></a></li>
                             <li><a href="howitworks.html">How It works</a></li>
-                            <li><a href="success.html">Success Stories</a></li>
+                            <li><a href="success-stories.html">Success Stories</a></li>
                       
                             <li class="dropdown">
                               <button href="javascript:void(0);" class="dropdown-toggle">Resources<i class="fas fa-chevron-down arrow-icon"></i></button>
@@ -480,7 +480,7 @@ Thank you for visiting our site.</p>
     </footer> 
 		
    <!-- Modal -->
-   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -489,7 +489,7 @@ Thank you for visiting our site.</p>
 			</div>
 			
 			<!-- prehomeclub -->
-			<form id="prehomeForm" action="https://test.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00DC40000026yrZ" method="POST">
+			<form id="prehomeForm">
 				<input type="hidden" name="oid" value="00DC40000026yrZ">
 				<input type="hidden" id="company" name="company" value="Default company">
 				<input type="hidden" name="lead_source" value="Landing Page Header">
@@ -599,6 +599,13 @@ Thank you for visiting our site.</p>
 			<div class="modal-footer d-flex justify-content-between">
 				<button type="button" id="prevBtn" onclick="nextPrevHeader(-1)" style="display:none;" class="theme-btn-form-btn btn-radius">Previous</button>
 				<button type="button" id="nextBtn" onclick="nextPrevHeader(1)" class="theme-btn-form-btn btn-radius">Count me in</button>
+                <button
+  type="button"
+  id="keepMePostedBtn"
+  class="theme-btn-form-btn btn-radius"
+>
+ keep me posted 
+</button>
 			</div>
 			
 			
@@ -1134,6 +1141,119 @@ Thank you for visiting our site.</p>
                                     
                                     </script>
 
+
+                                    <script>
+// Helper: Validate form fields (customize as needed)
+function validateWaitlistForm() {
+  const name = document.getElementById('last_name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const location = document.getElementById('locationHeader').value.trim();
+  const property = document.getElementById('propertyHeader').value.trim();
+
+  if (!name || !email || !phone || !location || !property) {
+    alert("Please fill all required fields.");
+    return false;
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    alert("Please enter a valid email.");
+    return false;
+  }
+  if (!/^\d{10}$/.test(phone)) {
+    alert("Please enter a valid 10-digit phone number.");
+    return false;
+  }
+  return true;
+}
+
+async function handleWaitlistSubmit(e) {
+  e.preventDefault();
+
+  if (!validateWaitlistForm()) return;
+
+  // Gather form data
+  const name = document.getElementById('last_name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  let selectedLocation = '';
+  let otherLocation = '';
+  if (
+    document.getElementById('otherLocation') &&
+    !document.getElementById('otherLocation').classList.contains('d-none') &&
+    document.getElementById('otherLocation').value.trim() !== ''
+  ) {
+    selectedLocation = 'Other';
+    otherLocation = document.getElementById('otherLocation').value.trim();
+  } else {
+    selectedLocation = document.getElementById('locationHeader').value.trim();
+    otherLocation = '';
+  }
+
+  let selectedLayout = '';
+  let otherLayout = '';
+  if (
+    document.getElementById('otherPropertyType') &&
+    !document.getElementById('otherPropertyType').classList.contains('d-none') &&
+    document.getElementById('otherPropertyType').value.trim() !== ''
+  ) {
+    selectedLayout = 'Other';
+    otherLayout = document.getElementById('otherPropertyType').value.trim();
+  } else {
+    selectedLayout = document.getElementById('propertyHeader').value.trim();
+    otherLayout = '';
+  }
+
+  const payload = {
+    name,
+    email,
+    phone,
+    selectedLocation,
+    otherLocation,
+    selectedLayout,
+    otherLayout,
+  };
+
+  try {
+    const response = await fetch('https://prehome-website-backend-service.onrender.com/submit-waitlist', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    if (response.ok) {
+      window.location.href = "https://www.prehome.in/thank-you";
+    } else {
+      const data = await response.json();
+      alert(data.error || "Failed to submit waitlist form.");
+    }
+  } catch (error) {
+    alert("Failed to submit form. Please try again.");
+  }
+}
+
+// Attach handler to button
+document.getElementById('keepMePostedBtn').addEventListener('click', handleWaitlistSubmit);
+</script>
+
+
+
+<script>
+let currentTab3 = 0;  // Current tab is set to be the first tab (0)
+showTab(currentTab3);  // Display the current tab
+
+function showTab(n) {
+    let x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+
+    // Handle button visibility
+    document.getElementById("prevBtn").style.display = (n === 0) ? "none" : "inline";
+    document.getElementById("nextBtn").style.display = (n === 0) ? "inline" : "none";
+    document.getElementById("keepMePostedBtn").style.display = (n === x.length - 1) ? "inline" : "none";
+
+    fixStepIndicator(n);
+}
+</script>
 
 
 </body>
