@@ -1,0 +1,37 @@
+# Redirect HTTP to HTTPS
+
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Redirect the root domain (https://www.prehome.in/) to a specific file like home.html
+RewriteRule ^$ /home.html [L]
+
+# Redirects anyone trying to access /home back to the root URL
+
+RewriteCond %{REQUEST_URI} ^/home$
+RewriteCond %{QUERY_STRING} ^$
+RewriteRule ^(.*)$ / [R=301,L]
+
+# Check if the requested URL ends with .html
+RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
+
+# Redirect to the clean URL without .html (e.g. /buyers/home.html to /buyers/home)
+RewriteRule ^(.*)\.html$ /$1 [R=301,L]
+
+# Special rule for the /buyers/ homepage to redirect to clean URL
+RewriteRule ^buyers/home$ /buyers/ [R=301,L]
+
+# Internally rewrite the /buyers/ URL to point to the home.html file
+RewriteRule ^buyers/$ /buyers/home.html [L]
+
+# Internally rewrite other clean URLs to their corresponding .html files
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php81” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php81 .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
