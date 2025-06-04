@@ -7,7 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // MongoDB connection URI
-const mongoURI = 'mongodb+srv://prehome_website_user:1ywa7PfsUW3pPWvt@lead-tracking.jysawuj.mongodb.net/';
+const mongoURI = "mongodb+srv://prehome_website_user:1ywa7PfsUW3pPWvt@lead-tracking.jysawuj.mongodb.net/website_forms";
 
 // Connect to MongoDB
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -71,7 +71,7 @@ const WaitlistFormSchema = new mongoose.Schema({
   },
   otherLayout: { type: String, trim: true, default: '' },
   createdAt: { type: Date, default: Date.now },
-});
+},{ collection: 'waitlist_leads' });
 
 
 const Waitlist = mongoose.model('Waitlist', WaitlistFormSchema);
