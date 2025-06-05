@@ -10,9 +10,14 @@ const PORT = process.env.PORT || 5000;
 const mongoURI = "mongodb+srv://prehome_website_user:1ywa7PfsUW3pPWvt@lead-tracking.jysawuj.mongodb.net/website_forms";
 
 // Connect to MongoDB
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("MongoDB connected successfully"))
-    .catch(err => console.log("MongoDB connection error:", err));
+mongoose.connect(mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  dbName: 'website_forms' 
+})
+.then(() => console.log("MongoDB connected successfully to website_forms"))
+.catch(err => console.log("MongoDB connection error:", err));
+
 
 // Middleware
 app.use(cors());
@@ -25,7 +30,7 @@ const leadSchema = new mongoose.Schema({
     contact: String,
     location: String,
     message: String
-});
+},{ collection: 'general_inquiries' });
 const Lead = mongoose.model('Lead', leadSchema);
 
 // Appointment form schema & model
@@ -34,7 +39,7 @@ const appointmentSchema = new mongoose.Schema({
     contact: String,
     date: String,
     time: String
-});
+},{ collection: 'expert_session_bookings' });
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 
 // Waitlist form schema & model
