@@ -19,11 +19,6 @@ RewriteCond %{THE_REQUEST} \s/([^.]+)\.html [NC]
 # Redirect to the clean URL without .html (e.g. /buyers/home.html to /buyers/home)
 RewriteRule ^(.*)\.html$ /$1 [R=301,L]
 
-# Special rule for the /buyers/ homepage to redirect to clean URL
-RewriteRule ^buyers/home$ /buyers/ [R=301,L]
-
-# Internally rewrite the /buyers/ URL to point to the home.html file
-RewriteRule ^buyers/$ /buyers/home.html [L]
 
 # Internally rewrite other clean URLs to their corresponding .html files
 RewriteCond %{REQUEST_FILENAME}.html -f

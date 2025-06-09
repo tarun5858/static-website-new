@@ -11195,8 +11195,8 @@ label {
     font-weight: bold;
   } */
   .last-sec-p{
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 16px;
+    /* font-weight: bold; */
     text-align: center;
   }
   .cal-to-action h2 {
@@ -11281,7 +11281,7 @@ text-align: left;
 }
 .last-sec-p{
   /* margin-top: 20px; */
-  font-size: 20px!important;
+  font-size: 16px!important;
   color: #000929!important;
   text-align: left;
 }
