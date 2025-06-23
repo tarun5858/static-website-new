@@ -11942,3 +11942,12 @@ font-weight: bold;text-align: center; font-size: 48px; margin: 80px 0 50px 0;
   align-items: center;
   border-radius: 50%;
 }
+.t-head{
+background-color: #f1f1f1 !important;
+}
+.t-body > tr >td{
+  background-color: #fff;
+}
+.t-body > tr:hover td{
+  background-color: #fff;
+}

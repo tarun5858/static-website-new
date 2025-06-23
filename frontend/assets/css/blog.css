@@ -198,3 +198,23 @@ ol>li>ul>li {
   padding-top: 50px;
   padding-bottom: 50px;
 }
+@media (max-width: 576px) {
+  td:nth-child(1),
+th:nth-child(1) {
+   background-color: #f9c2c2;
+  color: #000;
+  font-size: 14px;
+}
+  td:nth-child(2),
+th:nth-child(2) {
+  background-color: #c2f9c2;
+  color: #000;
+  font-size: 14px;
+}
+  td:nth-child(3),
+th:nth-child(3) {
+  background-color: #c2d1f9;
+  color: #000;
+  font-size: 14px;
+}
+}
