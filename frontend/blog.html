@@ -292,23 +292,29 @@
 
     <section class="portfolio-grid-wrapper" style="padding-bottom: 50px;">
         <div class="container container-lg">
-            <div class="row align-center d-flex">
-                <i class=" fas fa-chevron-left "></i>
-                <div class="col-12 pb-3">
-                    <div class="case-cat-filter">
-                        <div class="case-cat-filter-scroll-width">
-<button class="topic-btn active" data-topic="ALL BLOGS">ALL BLOGS</button>
-    <button class="topic-btn" data-topic="RENTING VS BUYING">RENTING VS BUYING</button>
-    <button class="topic-btn" data-topic="DOWN PAYMENT">DOWN PAYMENT</button>
-    <button class="topic-btn" data-topic="HOME LOANS">HOME LOANS</button>
-    <button class="topic-btn" data-topic="READY TO MOVE">Under Construction Vs Ready-to-move in</button>
-    <button class="topic-btn" data-topic="VALUE OF PROPERTY">Property Valuation</button>
-                        </div>
-                    </div>
-                    
-                </div>
-                <i class=" fas fa-chevron-right " style="margin-left:10px;"></i>
+           <div class="row align-center d-flex">
+               <div class="col-12 pb-3">
+                   <div class="case-cat-filter d-flex">
+                       <div class="icon-box">
+                           <i class="fas fa-chevron-left scroll-left" style="cursor: pointer;"></i>
+                       </div>
+                       <div class="case-cat-filter-scroll-width" id="scrollContainer">
+                <button class="topic-btn active" data-topic="ALL BLOGS">ALL BLOGS</button>
+                <button class="topic-btn" data-topic="RENTING VS BUYING">RENTING VS BUYING</button>
+                <button class="topic-btn" data-topic="DOWN PAYMENT">DOWN PAYMENT</button>
+                <button class="topic-btn" data-topic="HOME LOANS">HOME LOANS</button>
+                <button class="topic-btn" data-topic="READY TO MOVE">Under Construction Vs Ready-to-move in</button>
+                <button class="topic-btn" data-topic="VALUE OF PROPERTY">Property Valuation</button>
+                
             </div>
+            <div class="icon-box">
+                              <i class="fas fa-chevron-right scroll-right" style=" cursor: pointer;"></i>
+
+                       </div>
+        </div>
+    </div>
+</div>
+
 
             <div class="row ">
 
@@ -328,7 +334,7 @@
                     <div class="row">
                         <div class="col-12 blogs-sm-desc">
                             <a href="blogs/The-Hidden-Value-in-Properties.html">
-                                <p>While location and price often dominate property discussions, several hidden factors...</p>
+                                <p>While location and price often dominate property discussions, several hidden factors can significantly impact ....</p>
                             </a>
                         </div>
                     </div>
@@ -374,7 +380,7 @@
                     <div class="row">
                         <div class="col-12 blogs-sm-desc">
                             <a href="blogs/Beyond-the-Price-Tag-Factors-Affecting-Property-Value.html">
-                                <p>When considering a property investment, the listed price is just the tip of the iceberg. Understanding the factors that truly drive property...</p>
+                                <p>When considering a property investment, the listed price is just the tip of the iceberg. Understanding the factors ...</p>
                             </a>
                         </div>
                     </div>
@@ -1747,6 +1753,26 @@ function showTab(n) {
 </script>
 
   <!-- blog filter script -->
+
+
+  <!-- scroll script -->
+  <script>
+  const scrollContainer = document.getElementById('scrollContainer');
+  const scrollAmount = 150;
+
+  document.querySelector('.scroll-left').addEventListener('click', () => {
+    console.log("Scrolling left");
+    scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  document.querySelector('.scroll-right').addEventListener('click', () => {
+    console.log("Scrolling right");
+    scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+</script>
+
+
+  <!-- scroll script -->
 
 </body>
 

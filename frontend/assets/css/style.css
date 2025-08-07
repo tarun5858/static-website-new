@@ -7803,10 +7803,38 @@ header.header-3 .main-menu ul>li>ul ul {
     overflow-y: scroll;
     width: 100%;
     scrollbar-width: none;
+    /* border-left:30px solid black;
+    border-right:30px solid black; */
   }
-.case-cat-filter-scroll-width {
+  .icon-box{
+height: 50px;
+width: 35px;
+background-color: #000;
+display: flex;
+justify-content: center;
+align-items: center;
+/* position: relative;
+z-index: 999; */
+  }
+/* .case-cat-filter-scroll-width {
     width: max-content;
-  }
+    margin-left: 3%;
+
+
+      display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth; 
+  white-space: nowrap;
+  gap: 10px; 
+  } */
+   .case-cat-filter-scroll-width {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  white-space: nowrap;
+  width: 100%; /* Make it respect container width */
+}
 .case-study-carousel-arrow div:hover {
   color: #0D0D0F;
   background: #0086ad;
@@ -7816,7 +7844,7 @@ header.header-3 .main-menu ul>li>ul ul {
 .case-cat-filter {
   background: #FFF3DF;
   border-radius: 10px;
-  padding: 5px 10px 0 10px;
+  /* padding: 5px 0px 0 0px; */
 }
 
 .case-cat-filter button {
@@ -7836,27 +7864,32 @@ header.header-3 .main-menu ul>li>ul ul {
   border-radius: 10px;
 }
 .fa-chevron-right{
-position: relative;
-    left: 100%;
-    bottom: 50px;
+/* position: relative;
+    left: 96%;
+    bottom: 50px; */
+    color: #fff;
 } 
 .fa-chevron-left{
-position: relative;
-    left: -3%;
-    top: 35px;
+/* position: relative;
+    left: 1%;
+    top: 35px; */
+    color: #fff;
 } 
 
 @media (max-width: 1199px) {
   .case-cat-filter button {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 }
 
 @media (max-width: 767px) {
   .case-cat-filter button {
     padding: 10px;
-    font-size: 13px;
+    font-size: 12px;
   }
+  .icon-box {
+    height: 45px;
+    width: 30px;}
 }
 
 .case-cat-filter button.active,
