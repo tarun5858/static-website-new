@@ -1,7 +1,12 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+// const express = require('express');
+// const mongoose = require('mongoose');
+// const bodyParser = require('body-parser');
+// const cors = require('cors');
+
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import bodyParser from 'body-parser';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -80,6 +85,13 @@ const WaitlistFormSchema = new mongoose.Schema({
 
 
 const Waitlist = mongoose.model('Waitlist', WaitlistFormSchema);
+
+
+
+app.get('/health', (req, res) => {
+    // This immediately sends a 200 OK status
+    res.status(200).send({ status: 'OK', message: 'Service is active' });
+});
 
 // Route: Lead form
 app.post('/submit-form', async (req, res) => {
