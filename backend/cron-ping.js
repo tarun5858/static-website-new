@@ -1,32 +1,3 @@
-// cron-ping.js
-
-// import cron from 'node-cron';
-
-
-
-// const API_URL = 'https://prehome-website-backend-service.onrender.com/health';
-
-// const pingApi = async () => {
-//     try {
-//         //  Using native fetch API
-//         const res = await fetch(API_URL, {
-//             method: 'GET',
-//             // Adding a simple user-agent can sometimes help in server environments
-//             headers: { 'User-Agent': 'Node-Cron-Health-Checker' }
-//         });
-
-//         if (res.ok) { // res.ok covers status 200-299
-//             console.log(`[${new Date().toLocaleTimeString()}] API Ping Success: ${API_URL}`);
-//         } else {
-//             console.error(`[${new Date().toLocaleTimeString()}] API Ping Failed: Status ${res.status} for ${API_URL}`);
-//         }
-//     } catch (error) {
-//         console.error(`[${new Date().toLocaleTimeString()}] API Ping Error for ${API_URL}:`, error.message);
-//     }
-// };
-
-// cron.schedule('*/15 * * * *', pingApi); 
-// console.log("Cron job scheduled. Running...");
 
 import cron from 'node-cron';
 import axios from 'axios'; 
@@ -38,7 +9,7 @@ const API_URLS = [
     'https://prehome-website-backend-service.onrender.com/health', 
     
     // 2. The new external API
-    'https://emi-calculator-react-code.onrender.com/' 
+    // 'https://emi-calculator-react-code.onrender.com/' 
 ];
 
 // 2. Define the job function
