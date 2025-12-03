@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- ========== Meta Tags ========== -->
+<head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="modinatheme">
+
 <!-- ======== Page title ============ -->
 <title>Prehome</title>
+
+<!-- Google tag (gtag.js) added on 15-04-2025-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T76X5NDW35"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+//   gtag('config', 'G-J6QTGHD4CX');
+  gtag('config', 'G-T76X5NDW35');
+</script>
+
+
 <!-- ========== Favicon Icon ========== -->
 <link rel="shortcut icon" href="assets/img/favicon.png">
 <!-- ===========  All Stylesheet ================= -->
@@ -46,15 +61,7 @@
     })(window,document,'script','dataLayer','GTM-M3NCJBJF');
     </script> -->
 
-<!-- Google tag (gtag.js) added on 15-04-2025-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J6QTGHD4CX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-J6QTGHD4CX');
-</script>
 
 <!-- <button 
     onclick="gtag('event', 'click_brochure', {
@@ -490,7 +497,7 @@ font-size: 20px;
 			</div>
 			
 			<!-- prehomeclub -->
-			<form id="prehomeForm">
+			<form id="prehomeForm" onsubmit="gtag('event', 'form_submit', {'event_category': 'lead_gen'})" >
 				<input type="hidden" name="oid" value="00DC40000026yrZ">
 				<input type="hidden" id="company" name="company" value="Default company">
 				<input type="hidden" name="lead_source" value="Landing Page Header">
@@ -601,7 +608,8 @@ font-size: 20px;
 				<button type="button" id="prevBtn" onclick="nextPrevHeader(-1)" style="display:none;" class="theme-btn-form-btn btn-radius">Previous</button>
 				<button type="button" id="nextBtn" onclick="nextPrevHeader(1)" class="theme-btn-form-btn btn-radius">Count me in</button>
                 <button
-  type="button"
+  
+  type="submit"
   id="keepMePostedBtn"
   class="theme-btn-form-btn btn-radius"
 >
