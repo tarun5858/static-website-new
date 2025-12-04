@@ -9,6 +9,17 @@
     <meta name="author" content="modinatheme">
     <!-- ======== Page title ============ -->
     <title>Prehome</title>
+
+    <!-- Google tag (gtag.js) added on 04-12-2025-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-T76X5NDW35"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-T76X5NDW35');
+</script>
+
     <!-- ========== Favicon Icon ========== -->
     <link rel="shortcut icon" href="assets/img/favicon.png">
     <!-- ===========  All Stylesheet ================= -->
@@ -33,18 +44,6 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="icon" type="image/x-icon" href="assets/img/logo.ico">
 
-<!-- Google Tag Manager -->
-<!-- Google Tag Manager -->
-
-<!-- Google tag (gtag.js) added on 15-04-2025-->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-J6QTGHD4CX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-J6QTGHD4CX');
-</script>
 
 
 <!-- Google tag (gtag.js) -->
@@ -352,7 +351,9 @@
                 </div>
                 <div class="header-right-element">
                     <a href="#" class="theme-btn-navbar btn-radius animated" data-animation-in="fadeInRight"
-                        data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="#exampleModal">Join our waitlist
+                        data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
+    type="button">Join our waitlist
                         </a>
                 </div>
             </div>
@@ -403,7 +404,9 @@
 </header>
 <div class="header-right-element-mobile">
     <a href="#" class="theme-btn btn-radius animated" data-animation-in="fadeInRight" data-delay-in="0.9"
-        data-bs-toggle="modal" data-bs-target="#exampleModal">Join our waitlist</a>
+        data-bs-toggle="modal" data-bs-target="#exampleModal"
+        onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
+    type="button">Join our waitlist</a>
 </div>
 
 
@@ -719,7 +722,9 @@ function playVideo() {
                                     <h3  class="footer-h3" style="text-align: left;">Let's write it together. </h3>
                                     <div class="header-right-element d-flex ">
                                         <a href="#" class="theme-btn btn-radius animated" data-animation-in="fadeInRight" data-delay-in="0.9"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 70%;">Join us
+                                        data-bs-toggle="modal" data-bs-target="#exampleModal"  style="width: 70%;"
+                                        onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'howitworks_joinus_btn'})"
+    type="button">Join us
                                             </a>
                                     </div>
                                 </div>
@@ -759,7 +764,9 @@ function playVideo() {
 
                 <a href="#" class="theme-btn btn-radius animated join-our-waitlist"
                     data-animation-in="fadeInRight" data-delay-in="0.9" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal">Join our waitlist</a>
+                    data-bs-target="#exampleModal"
+                    onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'footer_btn'})"
+    type="button">Join our waitlist</a>
 
             </div>
         </div>
