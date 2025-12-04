@@ -219,7 +219,9 @@
                     </div>
                     <div class="header-right-element">
                         <a href="#" class="theme-btn-navbar btn-radius animated" data-animation-in="fadeInRight"
-                            data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="#exampleModal">Join our waitlist
+                            data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
+                            type="submit">Join our waitlist
                             </a>
                     </div>
                 </div>
@@ -270,7 +272,9 @@
     </header>
     <div class="header-right-element-mobile">
         <a href="#" class="theme-btn btn-radius animated" data-animation-in="fadeInRight" data-delay-in="0.9"
-            data-bs-toggle="modal" data-bs-target="#exampleModal">Join our waitlist</a>
+            data-bs-toggle="modal" data-bs-target="#exampleModal"
+            onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'homepage_banner_btn'})"
+            type="submit">Join our waitlist</a>
     </div>
 
 
@@ -285,7 +289,7 @@
 			</div>
 			
 			<!-- prehomeclub -->
-			<form id="prehomeForm">
+			<form id="prehomeForm" onsubmit="gtag('event', 'form_submit', {'event_category': 'lead_gen'})">
 				<input type="hidden" name="oid" value="00DC40000026yrZ">
 				<input type="hidden" id="company" name="company" value="Default company">
 				<input type="hidden" name="lead_source" value="Landing Page Header">
@@ -396,7 +400,7 @@
 				<button type="button" id="prevBtn" onclick="nextPrevHeader(-1)" style="display:none;" class="theme-btn-form-btn btn-radius">Previous</button>
 				<button type="button" id="nextBtn" onclick="nextPrevHeader(1)" class="theme-btn-form-btn btn-radius">Count me in</button>
                 <button
-  type="button"
+  type="submit"
   id="keepMePostedBtn"
   class="theme-btn-form-btn btn-radius"
 >
@@ -428,7 +432,7 @@
                     <p class="mb-2"><i class="fa fa-envelope-open pe-2" aria-hidden="true"></i> contact@prehome.in</p>
                     <p class="mb-2"><i class="fa fa-phone pe-2" aria-hidden="true"></i>  +91 88006 58299</p>
                     <p class="mb-4"><i class="fa fa-map-marker pe-2" aria-hidden="true"></i>  Coming Soon Near You</p>
-                    <p class="mb-2 whatsApp-link"><img class="pe-2" src="assets/img/chart-whatsapp.png">  <a href="https://api.whatsapp.com/send/?phone=918800658299&text&app_absent=0" target="_blank">Click here to chat with us on WhatsApp</a></p>
+                    <p class="mb-2 whatsApp-link"><img class="pe-2" src="assets/img/chart-whatsapp.png" style="display: inline;">  <a href="https://api.whatsapp.com/send/?phone=918800658299&text&app_absent=0" target="_blank">Click here to chat with us on WhatsApp</a></p>
                 </div>
             </div>
             
@@ -465,7 +469,9 @@
                     </div> 
                     
                     <div class="col-md-12 col-12">
-                        <button type="submit" class="submit-btn">Go !</button>
+                        <button type="submit" class="submit-btn"
+                        onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'getintouch_go_btn'})"
+    type="button">Go !</button>
                     </div> 
                 </form>
             </div> 
@@ -656,7 +662,11 @@
                             
                             <!-- Button to trigger the modal -->
                             <div class="col-md-12 col-12 mb-3">
-                                <button type="submit" class="submit-btn">SCHEDULE</button>
+                                <button 
+                                class="submit-btn"
+                                onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'speakexpert_schedule_btn'})"
+                                type="submit" 
+                            >SCHEDULE</button>
                                 
                             </div>
                             
