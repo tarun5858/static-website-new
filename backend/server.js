@@ -36,7 +36,8 @@ const leadSchema = new mongoose.Schema({
     name: String,
     contact: String,
     location: String,
-    message: String
+    message: String,
+    createdAt: { type: Date, default: Date.now },
 },{ collection: 'general_inquiries' });
 const Lead = mongoose.model('Lead', leadSchema);
 
@@ -45,7 +46,8 @@ const appointmentSchema = new mongoose.Schema({
     name: String,
     contact: String,
     date: String,
-    time: String
+    time: String,
+    createdAt: { type: Date, default: Date.now },
 },{ collection: 'expert_session_bookings' });
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 
