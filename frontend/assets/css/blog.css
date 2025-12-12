@@ -104,9 +104,6 @@ ol>li>ul>li {
   display: block;
 }
 
-.blogs-desc p {
-  margin: 0 0 31px 0 !important;
-}
 .rent-vs-buy span{
   background-color: #ef9c00;
   padding: 10px;
@@ -167,7 +164,7 @@ th:nth-child(1) {
 }
 
 .blogs-desc p {
-  margin: 0 0 31px 0 !important;
+  margin: 0 0 15px 0 !important;
 }
 
 ol {
