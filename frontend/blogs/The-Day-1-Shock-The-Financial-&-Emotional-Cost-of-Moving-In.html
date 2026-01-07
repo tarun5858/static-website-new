@@ -2,50 +2,78 @@
 <html lang="en">
 
 <head>
-    <!-- ========== Meta Tags ========== -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="modinatheme">
-    <!-- ======== Page title ============ -->
-    <title>Prehome</title>
 
-    <!-- Google tag (gtag.js) added on 04-12-2025-->
+    <meta name="description"
+        content="  Compare the true costs of homeownership and renting in India. Analyze long-term financial implications, tax benefits, and flexibility to make an informed housing decision.">
+    <meta property="og:title" content=" Homeownership vs. Renting in India: A Comprehensive Cost Comparison">
+    <meta name="keywords" content="homeownership vs renting India, buy vs rent cost comparison, long-term housing costs, real estate investment, renting vs buying calculator, breakeven point housing
+        ">
+    <!-- ======== Page title ============ -->
+    <title>The "Day 1" Shock: The Financial & Emotional Cost of Moving In</title>
+
+
+          <!-- Google tag (gtag.js) added on 04-12-2025-->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-T76X5NDW35"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-//   gtag('config', 'G-J6QTGHD4CX');
   gtag('config', 'G-T76X5NDW35');
 </script>
 
 
     <!-- ========== Favicon Icon ========== -->
-    <link rel="shortcut icon" href="assets/img/favicon.png">
+    <link rel="shortcut icon" href="../assets/img/favicon.png">
     <!-- ===========  All Stylesheet ================= -->
     <!--  Icon css plugins -->
-    <link rel="stylesheet" href="assets/css/icons.css">
+    <link rel="stylesheet" href="../assets/css/icons.css">
     <!--  animate css plugins -->
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/animate.css">
     <!--  slick css plugins -->
-    <link rel="stylesheet" href="assets/css/slick.css">
+    <link rel="stylesheet" href="../assets/css/slick.css">
     <!--  magnific-popup css plugins -->
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css">
     <!-- metis menu css file -->
-    <link rel="stylesheet" href="assets/css/metismenu.css">
+    <link rel="stylesheet" href="../assets/css/metismenu.css">
 
     <!-- select2 css file -->
-    <link rel="stylesheet" href="assets/css/nice-select2.css">
+    <link rel="stylesheet" href="../assets/css/nice-select2.css">
     <!--  Bootstrap css plugins -->
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
 
     <!-- link rel="stylesheet" href="dist/aos.css" /-->
     <!--  main style css file -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/x-icon" href="assets/img/logo.ico">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/blog.css">
+    <link rel="stylesheet" href="../assets/css/range-slider.css">
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo.ico">
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Google Tag Manager -->
+    <!-- Google Tag Manager -->
+
+<!-- Google tag (gtag.js) added on 15-04-2025-->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-J6QTGHD4CX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-J6QTGHD4CX');
+</script>
 
 
 <!-- Google tag (gtag.js) -->
@@ -61,25 +89,86 @@
   
     <!-- End Google Tag Manager -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-    <link src="./assets/css/popup.css">
-
-
-
     <style>
-        .pre-footer-container{
-            text-align:center;
-              display:flex;
-               flex-direction:column;
-                justify-content:space-around;
+
+.tab {
+  display: none;
+}
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+.location-btn {
+    /* padding: 10px 20px; */
+    border: 1px solid #ccc;
+    background: #f3f3f3;
+    color: #333;
+    transition: all 0.3s;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.location-btn:hover {
+    background: #e0e0e0;
+}
+
+.location-btn.selected {
+    border: 2px solid #007bff;
+    background: #0086AD !important;
+    color: #fff;
+}
+
+
+        .location-btnTab1 {
+                /* padding: 10px 20px; */
+                border: 1px solid #ccc;
+                background: #f3f3f3;
+                color: #333;
+                transition: all 0.3s;
+                margin: 5px;
+                cursor: pointer;
+            }
+            
+            .location-btnTab1:hover {
+                background: #e0e0e0;
+            }
+            
+            
+            .location-btnTab1.active {
+          background-color: #ef9c00 !important;
         }
-        .main-img-mobile{
-            display:none ;
+        
+        .mobile-nav .dropdown-menu {
+          display: none;
         }
+        
+        .mobile-nav .dropdown.open > .dropdown-menu {
+          display: block;
+        }
+        
+        .invalid {
+            border: 1px solid red !important;
+        }
+        
+        .selected.invalid {
+            box-shadow: 0 0 5px red;
+        }
+
         .dropdown-content {
   transition: max-height 0.3s ease!important;
   overflow: hidden;
@@ -89,44 +178,19 @@
 .dropdown.open .dropdown-content {
   max-height: 500px;
 }
-
-          @media (max-width: 576px) {
-        .pre-footer-container{
-            /* display: block; */
-            background-image: url("./assets/img/Frame\ 1000001324.png")!important;
-            background-repeat: no-repeat;
-            width: 356px!important;
-            height: 171px!important;
-            border-radius: 8%;
-            margin-bottom: 10%;
-        }
-        .main-img-mobile{
-            display: block;
-        }
-        .main-img-desktop{
-            display: none;
-        }
-        }
-    </style>
+        </style>
 </head>
 
+
 <body class="body-wrapper" class="aos-all">
-    <!-- <a href="https://api.whatsapp.com/send/?phone=918800658299&text&app_absent=0" class="chart-with-whatsapp" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" class="wa-messenger-svg-whatsapp wh-svg-icon"><path d=" M19.11 17.205c-.372 0-1.088 1.39-1.518 1.39a.63.63 0 0 1-.315-.1c-.802-.402-1.504-.817-2.163-1.447-.545-.516-1.146-1.29-1.46-1.963a.426.426 0 0 1-.073-.215c0-.33.99-.945.99-1.49 0-.143-.73-2.09-.832-2.335-.143-.372-.214-.487-.6-.487-.187 0-.36-.043-.53-.043-.302 0-.53.115-.746.315-.688.645-1.032 1.318-1.06 2.264v.114c-.015.99.472 1.977 1.017 2.78 1.23 1.82 2.506 3.41 4.554 4.34.616.287 2.035.888 2.722.888.817 0 2.15-.515 2.478-1.318.13-.33.244-.73.244-1.088 0-.058 0-.144-.03-.215-.1-.172-2.434-1.39-2.678-1.39zm-2.908 7.593c-1.747 0-3.48-.53-4.942-1.49L7.793 24.41l1.132-3.337a8.955 8.955 0 0 1-1.72-5.272c0-4.955 4.04-8.995 8.997-8.995S25.2 10.845 25.2 15.8c0 4.958-4.04 8.998-8.998 8.998zm0-19.798c-5.96 0-10.8 4.842-10.8 10.8 0 1.964.53 3.898 1.546 5.574L5 27.176l5.974-1.92a10.807 10.807 0 0 0 16.03-9.455c0-5.958-4.842-10.8-10.802-10.8z" fill-rule="evenodd"></path></svg>
-        <span>Chat with us</span></a> -->
-    <!-- preloader -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3NCJBJF" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3NCJBJF" 
-            height="0" 
-            width="0" 
-            style="display:none;visibility:hidden">
-    </iframe>
-  </noscript>
-  <!-- End Google Tag Manager (noscript) -->
-
-  <a href="https://api.whatsapp.com/send/?phone=918800658299&text&app_absent=0" class="chart-with-whatsapp"
+    <a href="https://api.whatsapp.com/send/?phone=918800658299&text&app_absent=0" class="chart-with-whatsapp"
         target="_blank">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32"
             class="wa-messenger-svg-whatsapp wh-svg-icon">
@@ -135,264 +199,256 @@
                 fill-rule="evenodd"></path>
         </svg>
         <span>Chat with us</span></a>
-  
-  <header class="header-1">
-    <div class="container container-lg">
-        <div class="row align-items-center justify-content-between">
-            <div class="col-lg-1 col-sm-3 col-md-3 col-6 pr-lg-5">
-                <div class="logo">
-                    <a href="home.html">
-                        <img src="assets/img/logo.svg" alt="AiQsoftTech">
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-11 text-end p-lg-0 d-none d-lg-flex justify-content-between align-items-center">
-                <div class="menu-wrap">
-                    <div class="main-menu">
-                        <ul>
-                            <li ><a  href="howitworks.html">How it works</a></li>
-                            <li><a href="success-stories.html">Success Stories</a></li>
-                            <!-- <li><a href="success.html">Blogs</a></li> -->
-                            <li class="mobile-dropdown dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle ">Resources<i class="fas fa-chevron-down" style="margin-left:10px;"></i></a>
 
-                                <ul class="dropdown-menu">
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="contactus.html">FAQs</a></li>
-                                    <li><a href="calculators.html">Calculators</a></li>
+
+        <header class="header-1">
+            <div class="container container-lg">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-lg-1 col-sm-3 col-md-3 col-6 pr-lg-5">
+                        <div class="logo">
+                            <a href="../home.html">
+                                <img src="../assets/img/logo.svg" alt="AiQsoftTech">
+                              
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-lg-11 text-end p-lg-0 d-none d-lg-flex justify-content-between align-items-center">
+                        <div class="menu-wrap">
+                            <div class="main-menu">
+                                <ul>
+                                    <li ><a  href="../howitworks.html">How it works</a></li>
+                                    <li><a href="../success-stories.html">Success Stories</a></li>
+                                    <!-- <li><a href="success.html">Blogs</a></li> -->
+                                    <li class="mobile-dropdown dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle ">Resources<i class="fas fa-chevron-down" style="margin-left:10px;"></i></a>
+    
+                                        <ul class="dropdown-menu">
+                                            <li><a href="../blog.html">Blog</a></li>
+                                            <li><a href="../contactus.html">FAQs</a></li>
+                                            <li><a href="../calculators.html">Calculators</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="mobile-dropdown dropdown">
+                                        <a href="javascript:void(0);" class="dropdown-toggle" >Company<i class="fas fa-chevron-down" style="margin-left:10px;"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="../ourstory.html">Our Story</a></li>
+                                            <li><a href="../contactus.html">Contact Us</a></li>
+                                            <li><a href="../termsandconditions.html">Terms & Conditions</a></li>
+                                            <li><a href="../privacypolicy.html">Privacy Policy</a></li>
+                                        </ul>
+                                    </li>
+                                    <!-- <li><a href="contactus.html">Contact us</a></li> -->
                                 </ul>
-                            </li>
-                            <li class="mobile-dropdown dropdown">
-                                <a href="javascript:void(0);" class="dropdown-toggle" >Company<i class="fas fa-chevron-down" style="margin-left:10px;"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="ourstory.html">Our Story</a></li>
-                                    <li><a href="contactus.html">Contact Us</a></li>
-                                    <li><a href="termsandconditions.html">Terms & Conditions</a></li>
-                                    <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                                </ul>
-                            </li>
-                            <!-- <li><a href="contactus.html">Contact us</a></li> -->
-                        </ul>
-                    </div>
-                </div>
-                <div class="header-right-element">
-                    <a href="#" class="theme-btn-navbar btn-radius animated" data-animation-in="fadeInRight"
-                        data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
-    type="button">Join our waitlist
-                        </a>
-                </div>
-            </div>
-
-            <div class="d-block d-lg-none col-sm-1 col-md-8 col-6 ">
-                <span id="hamburger">
-                    <span class="icon-container"><i class="fal fa-bars" style="font-size: 26px;"></i></span></i></div>
-                <div id="mobile-menu-overlay" class="mobile-menu-overlay hidden">
-                    <div class="mobile-nav-wrap" style="width: 100%;">
-                    <div class="mobile-menu-card">
-                      <button class="close-nav">&times;</button>
-                      <ul>
-                        <li><a href="home.html" class="active"><b>Home</b></a></li>
-                        <li><a href="howitworks.html">How It works</a></li>
-                        <li><a href="success-stories.html">Success Stories</a></li>
-                  
-                        <li class="dropdown">
-                          <button href="javascript:void(0);" class="dropdown-toggle">Resources<i class="fas fa-chevron-down arrow-icon"></i></button>
-                          <ul class="dropdown-content">
-                            <li><a href="blog.html">Blog</a></li>
-                            <li><a href="contactus.html">FAQs</a></li>
-                            <li><a href="calculators.html">Calculators</a></li>
-                          </ul>
-                        </li>
-                  
-                        <li class="dropdown">
-                          <button href="javascript:void(0);" class="dropdown-toggle">Company <i class="fas fa-chevron-down arrow-icon"></i></button>
-                          
-                          <ul class="dropdown-content">
-                            <li><a href="ourstory.html">Our Story</a></li>
-                            <li><a href="contactus.html">Contact Us</a></li>
-                            <li><a href="termsandconditions.html">Terms & Conditions</a></li>
-                            <li><a href="privacypolicy.html">Privacy Policy</a></li>
-                          </ul>
-                        </li>
-                      </ul>
-                  
-                    
-                    </div>
-                </div>
-                  </div>
-                  
-                <div class="overlay"></div>
-            </div>
-           
-        </div>
-    </div>
-</header>
-<div class="header-right-element-mobile">
-    <a href="#" class="theme-btn btn-radius animated" data-animation-in="fadeInRight" data-delay-in="0.9"
-        data-bs-toggle="modal" data-bs-target="#exampleModal"
-        onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
-    type="button">Join our waitlist</a>
-</div>
-
-
-
-
-<section class=" about-wrapper success-img " >
-        <h2 class="success-subhead">The Success Stories</h2>
-        
-        <img class="main-img-desktop" src="./assets/img/complete creative.png" alt="" style="width: 100%;">
-        <img class="main-img-mobile" src="./assets/img/complete.png" alt="" style="width: 100%;">
-                  
-        <div class="container">
-
-            <p style="font-size: 12px;text-align: right;">* Stock images used to protect the privacy of our customers</p>
-        </div>
-        
-    </section>
-
-
-    <section class="about-wrapper1 container mb-0">
-        <div class="container container-lg">
-<h2 class="success-subhead mobile-subhead">Hear it from the Prehomers</h2>
-                        <div class="container container-lg">
-                            <div class="row d-flex justify-content-center align-items-center text-img-container-success mt-5 mb-5">
-                                <div class="col-xl-4 col-md-4 ">
-                                    <div class="about-images  mb-md-5 mb-sm-0  aos-item "
-                                        data-aos="zoom-in">
-                                        <img src="assets/img/Untitled design.zip - 4.png" alt=""
-                                            style="display: inline-block; width: 500px; border-radius: 50% 50% 0 0;">
-                                        <p style="font-size: 12px;">* Stock images used to protect the privacy of our customers</p>
-
-                                    </div>
-                                </div>
-                                <div class="col-xl-8 col-md-8 ps-xl-5">
-                                    <div class="section-title list-style aos-item " data-aos="zoom-in-left" style="text-align: left;">
-                                        <img src="assets/img/icon.png" alt="">
-                                        <p class="pb-3 pagrap-success text-justify"> Taking the plunge was still a huge leap of
-                                            faith, but now, months into the program, I can confidently say it was one of
-                                            the best decisions ever. I'm now living in a beautiful 3 BHK apartment with
-                                            a clear path to ownership.
-                                        </p>
-                                        <p class="success-names">Annu S , Prehomer since 2023 </p>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-
-                        <div class="container container-lg">
-                            <div class="row d-flex  align-items-center text-img-container mt-5 mb-5">
-                                
-                                <div class="col-xl-8 col-md-8 ps-xl-5">
-                                    <div class="section-title list-style aos-item " data-aos="zoom-in-left" style="text-align: left;">
-                                        <h2 class=""><img src="assets/img/icon.png" alt=""></h2>
-                                        <p class="pb-3 pagrap-success text-justify">The photographs stored on our hard drive now
-                                            hang proudly on the walls we won’t have to return to a landlord. Our son can
-                                            draw, paint, and stick things wherever he wants, even having a room that
-                                            reflects his personality while blending seamlessly with the rest of the
-                                            house. After ten years, we’ve finally achieved our dream, thanks to the
-                                            support of PreHome.
-                                        </p>
-                                        <p class="success-names">Abhishek S, Prehomer since 2023
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div class="col-xl-4 col-md-4 ">
-                                    <div class="about-images  mb-md-5 mb-sm-0  aos-item section-title"
-                                        data-aos="zoom-in">
-                                        <img src="assets/img/Untitled design.zip - 2.png" alt=""
-                                            style="display: inline-block; width: 500px; border-radius: 50% 50% 0 0;">
-                                        <p style="font-size: 12px;">* Stock images used to protect the privacy of our customers</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-   
-
-                        <div class="container container-lg">
-                            <div class="row d-flex justify-content-center align-items-center text-img-container-success mt-5 mb-5 ">
-                                <div class="col-xl-4 col-md-4 ">
-                                    <div class="about-images  mb-md-5 mb-sm-0  aos-item section-title"
-                                        data-aos="zoom-in">
-                                        <img src="assets/img/Untitled design.zip - 3.png" alt=""
-                                            style="display: inline-block; width: 500px; border-radius: 50% 50% 0 0;">
-                                        <p style="font-size: 12px;">* Stock images used to protect the privacy of our customers</p>
-
-                                    </div>
-                                </div>
-                                <div class="col-xl-8 col-md-8 ps-xl-5">
-                                    <div class="section-title list-style aos-item " data-aos="zoom-in-left" style="text-align: left;">
-                                        <h2 class=""><img src="assets/img/icon.png" alt=""></h2>
-                                        <p class="pb-3 pagrap-success text-justify">What I appreciate most about this program is
-                                            the sense of security as it provides me an exclusive option to buy at the
-                                            end of the two-year term.The locked-in future value of the home protects me
-                                            from market fluctuations, allowing me to plan my finances meticulously.
-                                        </p>
-                                        <p class="success-names">Manisha B , Prehomer since 2024
-                                        </p>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
-
-
-            </div>
-        </div>
-    </section>
-
-    <section class="pre-footer" >
-        <div class="container  pre-footer-container" style="background-image: url(./assets/img/Frame\ 1000001323.png); height: 228px;width: 83%;">
-            <h1 >Learn how we unlock your path to <br> homeownership.</h1>
-            <div class="header-right-element d-flex align-items-end justify-content-center">
-                <a href="./howitworks.html" class="theme-btn-navbar btn-radius animated" data-animation-in="fadeInRight"
-                    data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="" style="width: 272px; height: 62px; "
-                    onclick="gtag('event', 'cta_click', {'event_category': 'navigation', 'event_label': 'success_page_btn'})"
-    type="button">Learn more
-                    </a>
-            </div>
-        </div>
-    </section>
+                        <div class="header-right-element">
+                            <a href="#" class="theme-btn-navbar btn-radius animated" data-animation-in="fadeInRight"
+                                data-delay-in="0.9" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
+    type="button">Join our waitlist
+                                </a>
+                        </div>
+                    </div>
     
-   
-
-    <section class="why-choice-us section-padding bg-cover "
-    style="background-image: url('assets/img/caltoactionbg.png')">
-    <div class="container container-lg">
-                <div class="row ">
-                    <div class="col-12 cal-to-action pt-100 pb-100 aos-item footer-section" data-aos="flip-up">
-                        <h2 class="text-white pb-3">Stay Tuned!</h2>
-                        <p class="text-white pb-4 mt-10 mb-30">Be the first to know about our upcoming homes near you!!
-                        </p>
-
-
-                        <a href="#" class="theme-btn btn-radius animated join-our-waitlist"
-                            data-animation-in="fadeInRight" data-delay-in="0.9" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                            onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'footer_btn'})"
+                    <div class="d-block d-lg-none col-sm-1 col-md-8 col-6 ">
+                        <span id="hamburger">
+                            <span class="icon-container"><i class="fal fa-bars" style="font-size: 26px;"></i></span></i></div>
+                        <div id="mobile-menu-overlay" class="mobile-menu-overlay hidden">
+                            <div class="mobile-nav-wrap" style="width: 100%;">
+                            <div class="mobile-menu-card">
+                              <button class="close-nav">&times;</button>
+                              <ul>
+                                <li><a href="../home.html" class="active"><b>Home</b></a></li>
+                                <li><a href="../howitworks.html">How It works</a></li>
+                                <li><a href="../success-stories.html">Success Stories</a></li>
+                          
+                                <li class="dropdown">
+                                  <button href="javascript:void(0);" class="dropdown-toggle">Resources<i class="fas fa-chevron-down arrow-icon"></i></button>
+                                  <ul class="dropdown-content">
+                                    <li><a href="../blog.html">Blog</a></li>
+                                    <li><a href="../contactus.html">FAQs</a></li>
+                                    <li><a href="../calculators.html">Calculators</a></li>
+                                  </ul>
+                                </li>
+                          
+                                <li class="dropdown">
+                                  <button href="javascript:void(0);" class="dropdown-toggle">Company <i class="fas fa-chevron-down arrow-icon"></i></button>
+                                  
+                                  <ul class="dropdown-content">
+                                    <li><a href="../ourstory.html">Our Story</a></li>
+                                    <li><a href="../contactus.html">Contact Us</a></li>
+                                    <li><a href="../termsandconditions.html">Terms & Conditions</a></li>
+                                    <li><a href="../privacypolicy.html">Privacy Policy</a></li>
+                                  </ul>
+                                </li>
+                              </ul>
+                          
+                            
+                            </div>
+                        </div>
+                          </div>
+                          
+                        <div class="overlay"></div>
+                    </div>
+                   
+                </div>
+            </div>
+        </header>
+        <div class="header-right-element-mobile">
+            <a href="#" class="theme-btn btn-radius animated" data-animation-in="fadeInRight" data-delay-in="0.9"
+                data-bs-toggle="modal" data-bs-target="#exampleModal"
+                onclick="gtag('event', 'cta_click', {'event_category': 'lead_gen', 'event_label': 'header_btn'})"
     type="button">Join our waitlist</a>
+        </div>
+
+
+
+    <section class=" section-padding headertop-border bg-color-1">
+        <div class="container container-lg">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-10">
+
+                    <div class="section-title list-style">
+                        <h2 class="pt-2 blog-head">The "Day 1" Shock: The Financial & Emotional Cost of Moving In</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-8 blog-date  pb-3"><b> 21 DEC,2025</b> &nbsp; &nbsp; 4 min read </div>
 
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-</section>
+    <section class=" mt-3">
+        <div class="container container-lg">
+            <div class="row">
+                <div class="col-md-8 blogs-desc">
 
- 
-     
+                    <img src="../assets/img/blogs/30.png" />
+<br>
+                    <h4>The "Day 1" Shock: The Financial & Emotional Cost of Moving In</h4>
+
+                    <p>The keys are in your hand. You expected to feel joy. Instead, you feel… exhausted? You are not alone. Psychologists refer to this as <b>"Post-Closing Depression"</b> . After the excitement of searching for a home and the stressful loan process, your energy crashes. Just as your mental energy drops, your finances face a big challenge.</p>
+<p>We call this the <b> "Day 1 Shock"</b> . It's the clash of unexpected costs and emotional exhaustion.</p>
+
+<h4>1. The "Advance Maintenance" Anxiety</h4>
+<ol>
+                        <li>You just emptied your savings for the Down Payment <a href="The-Long-Term-Benefits-of-a-Larger-Down-Payment.html">(Topic 2)</a>. You feel financially fragile.
+                            <ul>
+                            <li><b>The Shock :</b> The builder demands <b>₹1.5 Lakhs</b> (24 months maintenance) upfront.</li>
+                            <li><b>The Psychology :</b> This often triggers <b>"Buyer’s Remorse"</b>—that sinking feeling of “Did I budget this properly?”</li>
+                            <li><b>The Reality :</b> This is normal. It doesn’t mean you made a mistake; it just shows that the system requires upfront payments.</li>
+          
+                        </ul>    
+                        </li>
+                       
+
+                    </ol> 
+
+                    
+  <div class="text-center mt-4 mb-4">
+                        <img src="../assets/img/blogs/info32.png" alt="">
+                    </div> 
+
+                    <h4>2. The "Bare Shell" Stress</h4>
+
+<ol>
+                        <li>You walk into your "Dream Home" and it echoes. It feels cold.
+                            <ul>
+                            <li><b>The Cost :</b> Grills, lights, cleaning, and safety doors will cost <b>₹3–5 Lakhs</b>.</li>
+                            <li><b>The Mental Toll :</b> You feel pressured to make it "Instagram perfect" right away. This is the "Diderot Effect," where one new purchase (the home) leads to a series of other purchases (furniture, decor) you aren’t ready for yet.</li>
+                            <li><b>The Fix :</b> Live with the basics. It’s okay to leave some rooms empty for a year.</li>
+          
+                        </ul>    
+                        </li>
+                       
+
+                    </ol> 
+
+                    <h4>3. The Hidden "Transfer" Taxes</h4>
+
+<ol>
+                        <li>Society transfer fees (₹25k–₹1L) and utility deposits (₹10k) feel overwhelming.
+                            <ul>
+                            <li><b>The Insight :</b> Many homeowners find that the most stressful moments don’t come from large expenses but from many small, unexpected payments that appear when they’re already feeling drained.</li>
+                            <li><b>The Advice :</b> Set aside a "Sanity Fund" of ₹50k just for these hidden costs.</li>        
+                        </ul>    
+                        </li>
+                       
+
+                    </ol>         
+
+
+
+  <h4>Conclusion:</h4>
+  <p>The "Purchase Price" secures the house. The "Day 1 Shock" pays for the lifestyle. Acknowledge the stress. It’s not just you; it’s part of the process.</p>
+ <p>Once the initial panic fades, low-grade anxiety kicks in: “What if something breaks?” Let’s replace that worry with a plan. <b>Next → <a href="The-Anxiety-of-Decay-Why-You-Need-a-Maintenance-Fund.html">Blog 32</a>: "The Anxiety of Decay: Why You Need a 1% Maintenance Fund"</b></p>
+
+              
+            </div>
+
+                <div class="col-md-4 sticky-blogs">
+                    <!-- <div class="row">
+                    <div class="col-md-12 blog-cat pt-3 pb-3">
+                        <h4>Most Searched topics</h4>
+                        <ul>
+                           
+                            <li><a href="#">Psuedo Tag 1</a></li>
+                            <li><a href="#">Psuedo Tag Long name 1</a></li>
+                            <li><a href="#">Psuedo Tag 3</a></li>
+                        </ul>
+                    </div>
+                </div> -->
+
+                    <h4>Related blogs</h4>
+                    <div class="row related-blogs">
+                        <div class="col-12">
+                    
+                            <a href="The-Anxiety-of-Decay-Why-You-Need-a-Maintenance-Fund.html">
+                                <h4>The Anxiety of Decay: Why You Need a "1% Maintenance Fund"</h4>
+                            </a>
+                        </div>
+                        <div class="col-6 pt-2 minread">
+                            3 min read
+                        </div>
+                        <div class="col-6 pt-2 text-end">
+                            <a href="The-Anxiety-of-Decay-Why-You-Need-a-Maintenance-Fund.html">Read now</a>
+                        </div>
+                    </div>
+
+                    <div class="row related-blogs">
+                        <div class="col-12">
+                
+                            <a href="Asset-Management-101-Moving-From-Emotional-Attachment-to-Financial-Logic.html">
+                                <h4>Asset Management 101: Moving From Emotional Attachment to Financial Logic</h4>
+                            </a>
+                        </div>
+                        <div class="col-6 pt-2 minread">
+                            5 min read
+                        </div>
+                        <div class="col-6 pt-2 text-end">
+                            <a href="Asset-Management-101-Moving-From-Emotional-Attachment-to-Financial-Logic.html">Read now</a>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <footer class="footer-1 footer-wrap ">
         <div class="footer-widgets-wrapper text-white bg-cover"
-            style="background-image: url('assets/img/footer-widgets-bg.png')">
+            style="background-image: url('../assets/img/footer-widgets-bg.png')">
             <div class="container container-lg">
                 <div class="row">
                     <div class="col-sm-12 col-md-4 col-xl-4">
                         <div class="about-quantech pe-md-5 pe-xl-0 aos-item" data-aos="fade-right">
-                            <a href="home.html">
-                                <img src="assets/img/logo-footer.svg" alt="Prehome">
+                            <a href="../home.html">
+                                <img src="../assets/img/logo-footer.svg" alt="Prehome">
                             </a>
                             <p class="pt-md-4  pt-sm-4  mt-4  pb-md-3 pb-sm-1  f-24"><b>Redefining Homeownership</b>
                             </p>
@@ -405,33 +461,33 @@
                             <div class="col-sm-4 col-xl-6 pt-md-4 pt-sm-0">
                                 <div class="single-footer-wid ps-xl-5">
                                     <ul>
-                                        <li><a href="home.html">Home</a></li>
-                                        <li><a href="about.html">Our Story</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="contactus.html">Contact us</a></li>
+                                        <li><a href="../home.html">Home</a></li>
+                                        <li><a href="../about.html">Our Story</a></li>
+                                        <li><a href="../blog.html">Blog</a></li>
+                                        <li><a href="../contactus.html">Contact us</a></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-8 col-xl-6  pt-md-4 pt-sm-0">
                                 <div class="single-footer-wid ps-xl-2">
                                     <ul>
-                                        <li><a href="termsandconditions.html">Terms and Conditions</a></li>
-                                        <li><a href="privacypolicy.html">Privacy Policy</a></li>
+                                        <li><a href="../termsandconditions.html">Terms and Conditions</a></li>
+                                        <li><a href="../privacypolicy.html">Privacy Policy</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <!-- div class="row">
-                                <div class="col-12">
-                                    <div class="social-media single-footer-wid ps-xl-5">
-                                        <ul>
-                                            <li><a href="#"><img src="assets/img/instagram.png" /></a></li>
-                                            <li><a href="#"><img src="assets/img/Twitter.png" /></a></li>
-                                            <li><a href="#"><img src="assets/img/Whatsapp.png" /></a></li>
-                                        </ul>
-                                    </div>
+                            <div class="col-12">
+                                <div class="social-media single-footer-wid ps-xl-5">
+                                    <ul>
+                                        <li><a href="#"><img src="assets/img/instagram.png" /></a></li>
+                                        <li><a href="#"><img src="assets/img/Twitter.png" /></a></li>
+                                        <li><a href="#"><img src="assets/img/Whatsapp.png" /></a></li>
+                                    </ul>
                                 </div>
-                            </div -->
+                            </div>
+                        </div -->
                     </div>
 
 
@@ -487,6 +543,7 @@
         </div>
     </footer>
 
+
   <!-- Modal -->
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog">
@@ -511,7 +568,7 @@
 							<div class="">
 								<h3 class="title-color2" style="margin-bottom: 5px; font-size: 20px; font-weight: bold;" id="exampleModalLabel">Join our waitlist</h3>
 								<p class="" style="color: #000;
-								font-size: 14px;line-height: 1.1;">Be the first to know about our upcoming homes near you!
+								font-size: 14px;">Be the first to know about our upcoming homes near you!
 								
 							</p>
 						</div>
@@ -547,9 +604,9 @@
 						<div class="col-md-12 ">
 							<label style="text-align: left;">I’d prefer my layout to be :</label>
 							<div class="row">
-								<div class="col-4"><button type="button" onclick="selectPropertyHeader(this)" class="btn large-btn " data-value="2 BHK"><img src="./assets/img/filter_2.png" alt=""><span > BHK</span></button></div>
-								<div class="col-4"><button type="button" onclick="selectPropertyHeader(this)" class="btn large-btn " data-value="3 BHK"><img src="./assets/img/filter_3.png" alt=""><span > BHK</span></button></div>
-								<div class="col-4"><button type="button" onclick="selectPropertyHeader(this, true)" class="btn large-btn" data-value="Other"><img src="./assets/img/more_horiz.png" alt=""><span >other</span></button></div>
+								<div class="col-4"><button type="button" onclick="selectPropertyHeader(this)" class="btn large-btn " data-value="2 BHK"><img src="../assets/img/filter_2.png" alt=""><span > BHK</span></button></div>
+								<div class="col-4"><button type="button" onclick="selectPropertyHeader(this)" class="btn large-btn " data-value="3 BHK"><img src="../assets/img/filter_3.png" alt=""><span > BHK</span></button></div>
+								<div class="col-4"><button type="button" onclick="selectPropertyHeader(this, true)" class="btn large-btn" data-value="Other"><img src="../assets/img/more_horiz.png" alt=""><span >other</span></button></div>
 								<!-- Hidden input box for "Other" -->
 								<input type="text" id="otherPropertyType" class="form-control mt-2 d-none" placeholder="E.g., 4BHK">
 							</div>
@@ -571,7 +628,7 @@
 							<p class="title-color2 " style="color: #000; font-size: 14px; margin-top: 0px;"> Your details</p>
 						</div>
 						
-						<div class="col-md-12 mt-1">
+						<div class="col-md-12 mt-3">
 							<label for="phone" style="text-align: left;">Phone Number</label>
 							<input type="number" id="phone" name="phone" class="form-control form-box" placeholder="+91"   maxlength="10" required>
 						</div>
@@ -630,44 +687,66 @@
 
 
 
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="successModalLabel">Thank You!</h5>
-                </div>
-                <div class="modal-body">
-                    Thank you for contacting us. We will get back to you soon.
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-
-
     <!--  ALl JS Plugins
     ====================================== -->
-<script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/modernizr.min.js"></script>
-    <script src="assets/js/jquery.easing.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/isotope.pkgd.min.js"></script>
-    <script src="assets/js/imageload.min.js"></script>
-    <script src="assets/js/scrollUp.min.js"></script>
-    <script src="assets/js/slick.min.js"></script>
-    <script src="assets/js/slick-animation.min.js"></script>
-    <script src="assets/js/magnific-popup.min.js"></script>
-    <script src="assets/js/wow.min.js"></script>
-    <script src="assets/js/metismenu.js"></script>
-    <script src="assets/js/nice-select2.js"></script>
-    <script src="assets/js/popup.js"></script>
-    <script src="assets/js/active.js"></script>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/modernizr.min.js"></script>
+    <script src="../assets/js/jquery.easing.js"></script>
+    <script src="../assets/js/popper.min.js"></script>
+    <script src="../assets/js/bootstrap.min.js"></script>
+    <script src="../assets/js/isotope.pkgd.min.js"></script>
+    <script src="../assets/js/imageload.min.js"></script>
+    <script src="../assets/js/scrollUp.min.js"></script>
+    <script src="../assets/js/slick.min.js"></script>
+    <script src="../assets/js/slick-animation.min.js"></script>
+    <script src="../assets/js/magnific-popup.min.js"></script>
+    <script src="../assets/js/wow.min.js"></script>
+    <script src="../assets/js/metismenu.js"></script>
+    <script src="../assets/js/nice-select2.js"></script>
+    <script src="../assets/js/active.js"></script>
+    <script src="../assets/js/popup.js"></script>
+    <script src="../https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        function ins_contact() {
+            var usr_name = $('#name').val();
+            var email = $('#email').val();
+            var phonenumber = $('#phonenumber').val();
+            if (usr_name === '' || email === '' || phonenumber === '') {
+                alert("Please fill all the fields");
+                return; // Exit function if any field is empty
+            }
+
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!emailRegex.test(email)) {
+                alert('Invalid email address.');
+                return; // Exit function if any field is empty
+            }
+
+
+            $('#exampleModal').modal('hide');
+            if (usr_name != '' && email != '' && phonenumber != '') {
+                var datas = "type=second&usr_name=" + usr_name + "&email=" + email + "&phonenumber=" + phonenumber;
+                $.ajax({
+                    type: "POST",
+                    url: "insert_contact.php",
+                    data: datas,
+                    success: function (data) {
+                        if (data == 1) {
+                            $('#successModal').modal('show'); // Show the success modal
+                            setTimeout(function () {
+                                location.reload(); // Reload the page after 3 seconds
+                            }, 1500);
+                        }
+                    }
+                });
+            }
+        }
+    </script>
 
     <!-- Google tag (gtag.js) -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-T76X5NDW35"></script>
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-T76X5NDW35"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -681,6 +760,8 @@
         easing: 'ease-in-out-sine'
       });
     </script -->
+
+
   <!-- Event snippet for Submit lead form conversion page -->
 <script>
     gtag('event', 'conversion', {
@@ -689,12 +770,6 @@
         'currency': 'INR'
     });
   </script>
-
-
-
- 
-<!-- form script  -->
-
 
 
 
@@ -810,15 +885,15 @@
                                                 if (currentTab >= x.length) {
                                                     document.getElementById("prehomeForm").submit();
                                                     const modal = document.querySelector(".modal-content");
-                                         if (modal) {
-                                            modal.style.display = "none";
-                                        }
-                                    
-                                        setTimeout(() => {
-                                            document.getElementById("prehomeForm").submit();
-                                        }, 200);
-                                    
-                                                 return false;
+	 if (modal) {
+		modal.style.display = "none";
+	}
+
+	setTimeout(() => {
+		document.getElementById("prehomeForm").submit();
+	}, 200);
+
+             return false;
                                                 }
                                                 
                                                 showTab(currentTab);
@@ -932,7 +1007,7 @@
                                         // Checkbox validation (show inline error)
                                         const agreementCheckbox = currentTabElement.querySelector("#checkbox");
                                         if (agreementCheckbox && !agreementCheckbox.checked) {
-                                            let termsError = showError(agreementCheckbox, "");
+                                            showError(agreementCheckbox, "You must agree to the privacy policy.");
                                             valid = false;
                                         }
                                     
@@ -1153,7 +1228,8 @@
                                       });
                                     });
                                     
-                                    </script>   
+                                    </script>  
+
 
 
                                     <script>
@@ -1268,6 +1344,7 @@ function showTab(n) {
     fixStepIndicator(n);
 }
 </script>
+
 </body>
 
 </html>

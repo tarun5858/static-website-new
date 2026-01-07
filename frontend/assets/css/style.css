@@ -3370,7 +3370,27 @@ list-style: none;
     width: 131px;
     height: 24px;
 }
+.theme-btn-navbar-blog {
+    padding: 10px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #FFFFFF;
+    background: #0086AD;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    width: 215px;
+    text-align: center;
+    width: 400px;
+    height: 50px;
+    margin-bottom: 2%;
+}
 
+.theme-btn-navbar-blog.btn-radius {
+  border-radius: 40px;
+}
 .theme-btn-navbar.btn-radius {
   border-radius: 40px;
 }
@@ -3497,6 +3517,10 @@ list-style: none;
   color: #FFF;
 }
 .theme-btn-navbar:hover {
+  background: #ef9c00;
+  color: #FFF;
+}
+.theme-btn-navbar-blog:hover {
   background: #ef9c00;
   color: #FFF;
 }
