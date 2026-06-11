@@ -1900,7 +1900,16 @@ async function handleWaitlistSubmit(e) {
     });
 
     if (response.ok) {
-      window.location.href = "https://www.prehome.in/thank-you";
+    if (typeof gtag !== 'undefined') {
+    gtag('event', 'form_submit', {
+      'event_category': 'lead_gen',
+      'event_label': 'waitlist_submission_success',
+      'event_callback': () => {
+        // This forces the redirect to wait until GA finishes tracking
+        window.location.href = "https://www.prehome.in/thank-you";
+      }
+    });
+};
     } else {
       const data = await response.json();
       alert(data.error || "Failed to submit waitlist form.");

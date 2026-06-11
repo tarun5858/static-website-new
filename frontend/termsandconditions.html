@@ -492,7 +492,7 @@ Thank you for visiting our site.</p>
 			</div>
 			
 			<!-- prehomeclub -->
-			<form id="prehomeForm">
+			<form id="prehomeForm" onsubmit="gtag('event', 'form_submit', {'event_category': 'lead_gen'})">
 				<input type="hidden" name="oid" value="00DC40000026yrZ">
 				<input type="hidden" id="company" name="company" value="Default company">
 				<input type="hidden" name="lead_source" value="Landing Page Header">
@@ -1225,7 +1225,16 @@ async function handleWaitlistSubmit(e) {
     });
 
     if (response.ok) {
-      window.location.href = "https://www.prehome.in/thank-you";
+    if (typeof gtag !== 'undefined') {
+    gtag('event', 'form_submit', {
+      'event_category': 'lead_gen',
+      'event_label': 'waitlist_submission_success',
+      'event_callback': () => {
+        // This forces the redirect to wait until GA finishes tracking
+        window.location.href = "https://www.prehome.in/thank-you";
+      }
+    });
+};
     } else {
       const data = await response.json();
       alert(data.error || "Failed to submit waitlist form.");
