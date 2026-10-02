@@ -2454,7 +2454,7 @@
                                     
                                     </script>
 
-                                    <script>
+                           <script>
 // Helper: Validate form fields (customize as needed)
 function validateWaitlistForm() {
   const name = document.getElementById('last_name').value.trim();
@@ -2477,6 +2477,62 @@ function validateWaitlistForm() {
   }
   return true;
 }
+
+function resetWaitlistForm() {
+  const form = document.getElementById('prehomeForm');
+
+  // Clears name, email, phone and the hidden location/property values
+  form.reset();
+
+  // Hide and clear the "Other" text boxes
+  ['otherLocation', 'otherPropertyType'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.value = '';
+      el.classList.add('d-none');
+    }
+  });
+
+  // Remove the highlighted state from the location and layout buttons
+  document.querySelectorAll('.location-btn, .large-btn').forEach(btn => {
+    btn.classList.remove('active', 'selected');
+  });
+
+  // Go back to the first tab
+  document.querySelectorAll('.tab').forEach(tab => (tab.style.display = 'none'));
+  currentTab3 = 0;
+  showTab(0);
+}
+
+
+function closeWaitlistPopup() {
+  const form = document.getElementById('prehomeForm');
+  const modalEl = form.closest('.modal');
+  if (!modalEl) return;
+
+  // Bootstrap 5
+  if (window.bootstrap && bootstrap.Modal) {
+    const instance = bootstrap.Modal.getInstance(modalEl) || new bootstrap.Modal(modalEl);
+    instance.hide();
+    return;
+  }
+
+  // Bootstrap 4 (jQuery)
+  if (window.jQuery && jQuery.fn.modal) {
+    jQuery(modalEl).modal('hide');
+    return;
+  }
+
+  // Manual fallback
+  modalEl.classList.remove('show');
+  modalEl.style.display = 'none';
+  modalEl.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+  document.body.style.removeProperty('overflow');
+  document.body.style.removeProperty('padding-right');
+  document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+}
+
 
 async function handleWaitlistSubmit(e) {
   e.preventDefault();
@@ -2527,23 +2583,35 @@ async function handleWaitlistSubmit(e) {
   };
 
   try {
-    const response = await fetch('https://prehome-website-backend-service.onrender.com/submit-waitlist', {
+    const response = await fetch('https://static-website-backend-production.up.railway.app/submit-waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
 
     if (response.ok) {
-      if (typeof gtag !== 'undefined') {
+        resetWaitlistForm();
+        closeWaitlistPopup();
+
+        let redirected = false;
+  const goToThankYou = () => {
+    if(redirected) return;  // makes sure it only runs once
+    redirected = true;
+    window.location.href = "https://www.prehome.in/thank-you";
+  };
+
+    if (typeof gtag !== 'undefined') {
     gtag('event', 'form_submit', {
       'event_category': 'lead_gen',
       'event_label': 'waitlist_submission_success',
-      'event_callback': () => {
-        // This forces the redirect to wait until GA finishes tracking
-        window.location.href = "https://www.prehome.in/thank-you";
-      }
+      'event_callback': goToThankYou
+    //   'event_callback': () => {
+    //     // This forces the redirect to wait until GA finishes tracking
+    //     window.location.href = "https://www.prehome.in/thank-you";
+    //   }
     });
-};
+    setTimeout(goToThankYou, 1500); // fallback if GA is blocked or slow
+};   
     } else {
       const data = await response.json();
       alert(data.error || "Failed to submit waitlist form.");
@@ -2556,7 +2624,6 @@ async function handleWaitlistSubmit(e) {
 // Attach handler to button
 document.getElementById('keepMePostedBtn').addEventListener('click', handleWaitlistSubmit);
 </script>
-
 
 
 <script>

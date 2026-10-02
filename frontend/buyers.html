@@ -2127,7 +2127,7 @@ async function handleWaitlistSubmit(e) {
   };
 
   try {
-    const response = await fetch('https://prehome-website-backend-service.onrender.com/submit-waitlist', {
+    const response = await fetch('https://static-website-backend-production.up.railway.app/submit-waitlist', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
